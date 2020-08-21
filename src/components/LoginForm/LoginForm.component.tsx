@@ -11,7 +11,7 @@ const LoginForm: React.FC = () => {
     <div className="loginForm">
       <span className="loginForm__title">
         Masuk ke Paper.id{" "}
-        <img src={require("../../assets/images/Tutorial.svg")} />
+        <img alt="" src={require("../../assets/images/Tutorial.svg")} />
       </span>
       <span className="loginForm__subtitle">
         Masuk dengan akun yang terdaftar di Paper.id/PayPer
@@ -29,7 +29,7 @@ const LoginForm: React.FC = () => {
             type="password"
           />
           <div className="loginForm__forgotPassword">
-            <a>Lupa Kata Sandi?</a>
+            <a href="google.com">Lupa Kata Sandi?</a>
           </div>
           <CustomButton className="loginForm__submitButton" variant="secondary">
             Masuk

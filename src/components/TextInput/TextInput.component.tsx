@@ -17,7 +17,7 @@ const TextInput: React.FC<Props> = ({ icon, label, type = "text" }) => {
     <Form.Group className="textInput">
       {icon && (
         <div className="textInput__iconContainer">
-          <img src={icon}></img>
+          <img alt="" src={icon}></img>
         </div>
       )}
       <Form.Control

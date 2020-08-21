@@ -10,6 +10,7 @@ const Logo: React.FC<Props> = ({ className }) => {
   return (
     <img
       className={className}
+      alt="Paper.id"
       src={require("../../assets/images/paperlogowhite.svg")}
     />
   );

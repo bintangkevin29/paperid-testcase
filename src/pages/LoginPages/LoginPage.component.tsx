@@ -12,6 +12,7 @@ const LoginPage: React.FC = () => {
       <div className="loginPage__backgroundImageContainer">
         <img
           className="loginPage__backgroundImage"
+          alt=""
           src={require("../../assets/images/Gambar Untuk press Release-02.png")}
           srcSet={require("../../assets/images/Gambar Untuk press Release-02@2x.png")}
         ></img>
