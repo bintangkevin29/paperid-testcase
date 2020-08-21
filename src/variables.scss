@@ -1,0 +1,24 @@
+$color-primary: #3b7fba;
+$color-secondary: #afe47c;
+
+$theme-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+);
+
+%h1 {
+  font-size: 45px;
+}
+
+%link {
+  color: unset;
+  text-decoration: none;
+  opacity: 1;
+  transition: 0.2s opacity ease;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: unset;
+    opacity: 0.5;
+  }
+}

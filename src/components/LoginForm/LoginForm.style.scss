@@ -1,0 +1,63 @@
+@import "../../variables.scss";
+
+.loginForm {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 19px;
+  &__title {
+    @extend %h1;
+    font-weight: 600;
+    position: relative;
+    text-align: center;
+    margin-bottom: 63px;
+    &:after {
+      position: absolute;
+      width: 60px;
+      border-bottom: 5px solid #fff;
+      content: "";
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 300;
+    font-size: 19px;
+    margin-bottom: 40px;
+  }
+
+  &__formContainer {
+    width: 100%;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__forgotPassword {
+    width: 100%;
+    text-align: right;
+    font-size: 19px;
+    margin-bottom: 40px;
+    @extend %link;
+  }
+
+  &__submitButton {
+    width: 100%;
+    font-size: 19px;
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+    &:focus {
+      color: #fff;
+    }
+    &:disabled {
+      color: #fff;
+    }
+  }
+}
