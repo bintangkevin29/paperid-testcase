@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { Form } from "react-bootstrap";
 
 import "./TextInput.style.scss";
@@ -10,9 +10,17 @@ interface Props {
   label: string;
   placeholder?: string;
   type?: FormType;
+  name?: string;
+  onChange?: (e: FormEvent) => void;
 }
 
-const TextInput: React.FC<Props> = ({ icon, label, type = "text" }) => {
+const TextInput: React.FC<Props> = ({
+  icon,
+  label,
+  type = "text",
+  onChange,
+  name,
+}) => {
   return (
     <Form.Group className="textInput">
       {icon && (
@@ -21,9 +29,11 @@ const TextInput: React.FC<Props> = ({ icon, label, type = "text" }) => {
         </div>
       )}
       <Form.Control
+        onChange={onChange}
         className="textInput__inputField"
         type={type}
         placeholder={label}
+        name={name}
       />
     </Form.Group>
   );
