@@ -12,7 +12,7 @@ import {
 } from "../../redux/auth/auth.actions";
 import { RootState } from "../../redux/root.reducer";
 
-interface LoginNode {
+export interface LoginNode {
   username: string;
   password: string;
 }

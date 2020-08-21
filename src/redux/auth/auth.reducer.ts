@@ -5,6 +5,7 @@ export interface AuthStateProps {
   isFetching: boolean;
   token: string | undefined;
   errMsg: string | undefined;
+  username: string | undefined;
 }
 
 const INIT_STATE: AuthStateProps = {
@@ -12,6 +13,7 @@ const INIT_STATE: AuthStateProps = {
   isFetching: false,
   token: undefined,
   errMsg: undefined,
+  username: undefined,
 };
 
 const authReducer = (
@@ -37,6 +39,7 @@ const authReducer = (
         errMsg: undefined,
         name: action.payload.name,
         token: action.payload.token,
+        username: action.payload.username,
       };
     case "AUTH_FLUSH":
       return {
