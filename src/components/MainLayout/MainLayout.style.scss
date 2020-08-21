@@ -1,4 +1,21 @@
 @import "../../variables.scss";
 
 .mainLayout {
+  &__inner {
+    margin: 0;
+  }
+
+  &__content {
+    background-color: #F5FAFE;
+    height: 100vh;
+    width: 100%;
+  }
+
+  &__sidebarContainer {
+    padding: 0;
+  }
+
+  &__contentContainer {
+    padding: 0;
+  }
 }

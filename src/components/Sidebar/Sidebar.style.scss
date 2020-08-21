@@ -1,0 +1,53 @@
+@import "../../variables.scss";
+
+.sidebar {
+  height: 100vh;
+  background: rgb(86, 154, 211);
+  background: linear-gradient(
+    90deg,
+    rgba(86, 154, 211, 1) 0%,
+    rgba(72, 140, 199, 1) 100%
+  );
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px;
+  color: #fff;
+
+  &__backgroundImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__backgroundImage {
+    width: 100%;
+  }
+
+  &__logoContainer {
+    padding: 20px;
+    margin-bottom: 35px;
+  }
+
+  &__logo {
+    width: 160px;
+  }
+
+  &__navItem {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    @extend %link;
+    font-size: 17px;
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  &__nav {
+    width: 100%;
+  }
+}
