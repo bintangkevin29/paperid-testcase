@@ -11,7 +11,8 @@ interface Props {
   placeholder?: string;
   type?: FormType;
   name?: string;
-  onChange?: (e: FormEvent) => void;
+  onChange?: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+  value?: string;
 }
 
 const TextInput: React.FC<Props> = ({
@@ -20,6 +21,7 @@ const TextInput: React.FC<Props> = ({
   type = "text",
   onChange,
   name,
+  value,
 }) => {
   return (
     <Form.Group className="textInput">
@@ -34,6 +36,7 @@ const TextInput: React.FC<Props> = ({
         type={type}
         placeholder={label}
         name={name}
+        value={value}
       />
     </Form.Group>
   );
