@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 
 import "./TextInput.style.scss";
