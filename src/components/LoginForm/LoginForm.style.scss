@@ -43,7 +43,9 @@
     text-align: right;
     font-size: 19px;
     margin-bottom: 40px;
-    @extend %link;
+    a {
+      @extend %link;
+    }
   }
 
   &__submitButton {

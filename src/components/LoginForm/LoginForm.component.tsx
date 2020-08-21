@@ -29,7 +29,7 @@ const LoginForm: React.FC = () => {
             type="password"
           />
           <div className="loginForm__forgotPassword">
-            <a href="google.com">Lupa Kata Sandi?</a>
+            <a href="http://www.google.com/">Lupa Kata Sandi?</a>
           </div>
           <CustomButton className="loginForm__submitButton" variant="secondary">
             Masuk
