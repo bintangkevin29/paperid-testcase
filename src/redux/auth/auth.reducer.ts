@@ -1,18 +1,21 @@
 import { AuthActions } from "./auth.actions";
 
-interface StateProps {
+export interface AuthStateProps {
   userId: string | null;
   isFetching: boolean | null;
   token: string | null;
 }
 
-const INIT_STATE: StateProps = {
+const INIT_STATE: AuthStateProps = {
   userId: null,
   isFetching: false,
   token: null,
 };
 
-const authReducer = (state: StateProps = INIT_STATE, action: AuthActions) => {
+const authReducer = (
+  state: AuthStateProps = INIT_STATE,
+  action: AuthActions
+) => {
   switch (action.type) {
     default:
       return state;
