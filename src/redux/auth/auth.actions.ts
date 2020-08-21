@@ -16,6 +16,9 @@ export type AuthActions =
   | {
       type: "AUTH_ERROR";
       payload: string | undefined;
+    }
+  | {
+      type: "AUTH_FLUSH";
     };
 
 const fetchLoginStartFetching = (): AuthActions => ({
@@ -35,8 +38,13 @@ const fetchLoginSuccess = (data: UserNodes): AuthActions => ({
   },
 });
 
+const flushAuthData = (): AuthActions => ({
+  type: "AUTH_FLUSH",
+});
+
 export const fetchLoginStart = (loginData: object) => {
   return async (dispatch) => {
+    dispatch(flushAuthData());
     dispatch(fetchLoginStartFetching());
     const response = await customFetch(
       process.env.REACT_APP_API_URL + "/login",

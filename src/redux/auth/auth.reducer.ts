@@ -38,6 +38,12 @@ const authReducer = (
         name: action.payload.name,
         token: action.payload.token,
       };
+    case "AUTH_FLUSH":
+      return {
+        ...state,
+        name: undefined,
+        token: undefined,
+      };
     default:
       return state;
   }
