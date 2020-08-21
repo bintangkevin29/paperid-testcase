@@ -3,7 +3,7 @@ import "./App.scss";
 import LoginPage from "./pages/LoginPages";
 import { Route } from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Route exact path="/login">
@@ -11,6 +11,6 @@ function App() {
       </Route>
     </div>
   );
-}
+};
 
 export default App;
