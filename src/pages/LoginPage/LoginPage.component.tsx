@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import LoginForm from "../../components/LoginForm";
 
 import Logo from "../../components/Logo";
-import LoginForm from "../../components/LoginForm";
 
 import "./LoginPage.style.scss";
 import { Helmet } from "react-helmet";
