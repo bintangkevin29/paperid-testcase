@@ -17,8 +17,8 @@ const LoginPage: React.FC = () => {
         <img
           className="loginPage__backgroundImage"
           alt=""
-          src={require("../../assets/images/Gambar Untuk press Release-02.png")}
-          srcSet={require("../../assets/images/Gambar Untuk press Release-02@2x.png")}
+          src={require("../../assets/images/Gambar-Untuk-press-Release-02.png")}
+          srcSet={`${require("../../assets/images/Gambar-Untuk-press-Release-02@2x.png")} 2x`}
         ></img>
       </div>
       <div className="loginPage__topNav">
