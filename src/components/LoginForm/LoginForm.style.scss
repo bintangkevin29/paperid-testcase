@@ -38,6 +38,11 @@
     flex-direction: column;
   }
 
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__forgotPassword {
     width: 100%;
     text-align: right;
@@ -52,6 +57,7 @@
     width: 100%;
     font-size: 19px;
     color: #fff;
+    margin-bottom: 20px;
     &:hover {
       color: #fff;
     }
@@ -61,5 +67,11 @@
     &:disabled {
       color: #fff;
     }
+  }
+
+  &__errorMessage {
+    color: $color-danger;
+    font-size: 19px;
+    text-align: center;
   }
 }
