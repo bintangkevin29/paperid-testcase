@@ -5,10 +5,14 @@ import Logo from "../../components/Logo";
 import LoginForm from "../../components/LoginForm";
 
 import "./LoginPage.style.scss";
+import { Helmet } from "react-helmet";
 
 const LoginPage: React.FC = () => {
   return (
     <div className="loginPage">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="loginPage__backgroundImageContainer">
         <img
           className="loginPage__backgroundImage"
