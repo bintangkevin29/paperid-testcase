@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.component";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/root.reducer";
+import MainLayout from "./components/MainLayout";
 
 const App: React.FC = () => {
   const userToken = useSelector((state: RootState) => state.auth.token);
@@ -36,14 +37,16 @@ const App: React.FC = () => {
         <LoginPage />
       </Route>
       <Route exact path={modules.map((module) => module.url)}>
-        {modules.map((module, i) => {
-          const ChildComponent = module.component;
-          return (
-            <ProtectedRoute key={i} exact path={module.url}>
-              <ChildComponent />
-            </ProtectedRoute>
-          );
-        })}
+        <MainLayout>
+          {modules.map((module, i) => {
+            const ChildComponent = module.component;
+            return (
+              <ProtectedRoute key={i} exact path={module.url}>
+                <ChildComponent />
+              </ProtectedRoute>
+            );
+          })}
+        </MainLayout>
       </Route>
     </div>
   );
