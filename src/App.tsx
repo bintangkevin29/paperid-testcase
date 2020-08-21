@@ -8,27 +8,43 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/root.reducer";
 
 const App: React.FC = () => {
-  
   const userToken = useSelector((state: RootState) => state.auth.token);
   const history = useHistory();
-  useEffect(() => {
-    console.log(userToken);
 
+  useEffect(() => {
     if (userToken) {
-      console.log("cok");
       history.push("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToken]);
+
+  interface ModuleNodes {
+    component: React.FC;
+    url: string;
+  }
+
+  const modules: ModuleNodes[] = [
+    {
+      component: DashboardPage,
+      url: "/",
+    },
+  ];
 
   return (
     <div className="App">
       <Route exact path="/login">
         <LoginPage />
       </Route>
-      <ProtectedRoute exact path="/">
-        <DashboardPage />
-      </ProtectedRoute>
+      <Route exact path={modules.map((module) => module.url)}>
+        {modules.map((module, i) => {
+          const ChildComponent = module.component;
+          return (
+            <ProtectedRoute key={i} exact path={module.url}>
+              <ChildComponent />
+            </ProtectedRoute>
+          );
+        })}
+      </Route>
     </div>
   );
 };
