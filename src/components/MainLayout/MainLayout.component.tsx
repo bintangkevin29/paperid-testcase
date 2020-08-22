@@ -28,7 +28,7 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
               <div className="mainLayout__pageTitleContainer">
                 <span className="mainLayout__pageTitle">{pageTitle}</span>
               </div>
-              {children}
+              <div className="mainLayout__pageContent">{children}</div>
             </div>
           </div>
         </Col>
