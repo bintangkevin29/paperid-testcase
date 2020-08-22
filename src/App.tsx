@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, useLocation } from "react-router-dom";
 
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.component";
 
@@ -13,31 +13,53 @@ import LoginPage from "./pages/LoginPage";
 
 import "./App.scss";
 
-interface ModuleNodes {
+export interface ModuleNodes {
   component: React.FC;
   url: string;
-  title: string;
+  pageTitle: string;
+  name: string;
+  icon?: string;
+  childModule?: ModuleNodes[];
 }
 
 export const modules: ModuleNodes[] = [
   {
     component: DashboardPage,
     url: "/",
-    title: "Dashboard",
+    name: "Dashboard",
+    icon: require("./assets/images/dashboard.svg"),
+    pageTitle: "Dashboard",
   },
   {
     component: FinancePage,
-    url: "/finance",
-    title: "Finance",
+    url: "/finance/account",
+    pageTitle: "Finance",
+    icon: require("./assets/images/finance.svg"),
+    name: "Finance",
+    childModule: [
+      {
+        component: FinancePage,
+        url: "/finance/account",
+        pageTitle: "All Finance Account",
+        name: "Account",
+      },
+      {
+        component: FinancePage,
+        url: "/finance/transaction",
+        pageTitle: "All Finance Transactions",
+        name: "Transactions",
+      },
+    ],
   },
 ];
 
 const App: React.FC = () => {
   const userToken = useSelector((state: RootState) => state.auth.token);
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
-    if (userToken) {
+    if (userToken && location.pathname === "/login") {
       history.push("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
