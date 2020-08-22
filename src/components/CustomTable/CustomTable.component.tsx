@@ -7,9 +7,11 @@ const CustomTable: React.FC = () => {
     <div className="customTable">
       <table className="table">
         <thead>
-          <td>Test</td>
-          <td>asd</td>
-          <td>as</td>
+          <tr>
+            <th>Test</th>
+            <th>asd</th>
+            <th>as</th>
+          </tr>
         </thead>
         <tbody></tbody>
       </table>
