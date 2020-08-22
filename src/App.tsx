@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
-import "./App.scss";
-import LoginPage from "./pages/LoginPage";
-import { Route, useHistory } from "react-router-dom";
-import DashboardPage from "./pages/DashboardPage";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.component";
 import { useSelector } from "react-redux";
+import { Route, useHistory } from "react-router-dom";
+
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.component";
+
 import { RootState } from "./redux/root.reducer";
+
 import MainLayout from "./components/MainLayout";
+import FinancePage from "./pages/FinancePage";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+
+import "./App.scss";
 
 interface ModuleNodes {
   component: React.FC;
@@ -19,6 +24,11 @@ export const modules: ModuleNodes[] = [
     component: DashboardPage,
     url: "/",
     title: "Dashboard",
+  },
+  {
+    component: FinancePage,
+    url: "/finance",
+    title: "Finance",
   },
 ];
 
