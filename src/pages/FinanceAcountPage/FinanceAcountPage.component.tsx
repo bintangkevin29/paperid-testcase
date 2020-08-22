@@ -9,9 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/root.reducer";
 
 const FinanceAcountPage: React.FC = () => {
-  const financeAccountData = useSelector(
-    (state: RootState) => state.financeAccount.data
-  );
+  const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
   const tableData = {
     columns: [
       {
@@ -40,6 +38,7 @@ const FinanceAcountPage: React.FC = () => {
       };
       return data;
     }),
+    details: financeAccountData,
   };
 
   return (

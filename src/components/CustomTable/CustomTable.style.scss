@@ -17,6 +17,23 @@
       border: 0;
       font-weight: 500;
       font-size: 13px;
+      vertical-align: middle;
+    }
+  }
+
+  &__button {
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 7px 12px;
+    font-weight: 600;
+    color: #fff;
+
+    &:focus {
+      color: #fff;
+    }
+
+    &:hover {
+      color: #fff;
     }
   }
 }

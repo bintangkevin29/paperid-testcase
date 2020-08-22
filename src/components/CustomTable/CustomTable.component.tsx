@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import "./CustomTable.style.scss";
+import CustomButton from "../CustomButton";
 
 interface TableNode {
   columns: {
@@ -8,6 +9,7 @@ interface TableNode {
     key: string;
   }[];
   data: object[];
+  details: object[];
 }
 
 interface Props {
@@ -23,6 +25,7 @@ const CustomTable: React.FC<Props> = ({ tableData }) => {
             {tableData.columns.map((column) => (
               <th key={column.key}>{column.header}</th>
             ))}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +34,11 @@ const CustomTable: React.FC<Props> = ({ tableData }) => {
               {tableData.columns.map((column, j) => (
                 <td key={j}>{dt[column.key]}</td>
               ))}
+              <td>
+                <CustomButton variant="secondary" className="customTable__button">
+                  Actions
+                </CustomButton>
+              </td>
             </tr>
           ))}
         </tbody>
