@@ -27,6 +27,12 @@ const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> 
   index,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const handleDistpachDelete = (): void => {
+    setShowMenu(false);
+    tableData.dispatchDelete(tableData.details[index].id);
+  };
+
   return (
     <Fragment>
       {tableData.columns.map((column, j) => (
@@ -48,10 +54,7 @@ const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> 
             <div className="customTable__popupMenuItems">
               <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
             </div>
-            <div
-              onClick={() => tableData.dispatchDelete(tableData.details[index].id)}
-              className="customTable__popupMenuItems"
-            >
+            <div onClick={handleDistpachDelete} className="customTable__popupMenuItems">
               <DeleteRoundedIcon className="customTable__popupMenuIcon" /> <span>Delete</span>
             </div>
           </CustomPopupMenu>
