@@ -26,8 +26,8 @@ const INIT_STATE: FinanceAccountProps = {
     },
     {
       id: "2",
-      name: "Sarapan Expense",
-      description: "biaya buat sarapan",
+      name: "Dinner Expense",
+      description: "biaya buat Makan Siang",
       type: "expense",
       last_modified: "2020-05-20 07:00:05",
       created_at: "2020-05-20 06:50:05",
