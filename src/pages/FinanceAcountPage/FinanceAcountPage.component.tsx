@@ -1,15 +1,18 @@
-import React from "react";
-
-import "./FinanceAcountPage.style.scss";
-
-import SearchInput from "../../components/SearchInput";
-import CustomButton from "../../components/CustomButton";
-import CustomTable from "../../components/CustomTable";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { RootState } from "../../redux/root.reducer";
 import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
 
+import CustomModal from "../../components/CustomModal";
+import SearchInput from "../../components/SearchInput";
+import CustomButton from "../../components/CustomButton";
+import CustomTable from "../../components/CustomTable";
+
+import "./FinanceAcountPage.style.scss";
+
 const FinanceAcountPage: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const dispatch = useDispatch();
   const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
   const tableData = {
@@ -43,9 +46,12 @@ const FinanceAcountPage: React.FC = () => {
     <div className="financeAccountPage">
       <div className="financeAccountPage__subHeader">
         <SearchInput className="financeAccountPage__search" />
-        <CustomButton>Create New Account</CustomButton>
+        <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
       </div>
       {tableData?.data && <CustomTable tableData={tableData} />}
+      <CustomModal title="Add" showModal={showModal} setShowModal={() => setShowModal(false)}>
+        TEst
+      </CustomModal>
     </div>
   );
 };

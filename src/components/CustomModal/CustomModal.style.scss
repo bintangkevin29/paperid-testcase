@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+
+.customModal {
+  color: #3d5568;
+  .modal-content {
+    border: 0;
+    padding: 30px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba($color: $color-primary, $alpha: 0.1);
+  }
+  .modal-header {
+    .badge {
+      color: #8dbfe3;
+      margin-bottom: 10px;
+    }
+    .modal-title {
+      font-weight: 600;
+      font-size: 20px;
+    }
+    border: 0;
+  }
+  .modal-footer {
+    border: 0;
+  }
+
+  &__titleContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
