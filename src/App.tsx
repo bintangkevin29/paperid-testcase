@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, useHistory, useLocation } from "react-router-dom";
+import { Route, useHistory, useLocation, Switch } from "react-router-dom";
+
+import "./App.scss";
 
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.component";
 
 import { RootState } from "./redux/root.reducer";
 
 import MainLayout from "./components/MainLayout";
-import FinancePage from "./pages/FinancePage";
+import FinanceAcountPage from "./pages/FinanceAcountPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
-
-import "./App.scss";
+import FinancePage from "./pages/FinancePage";
 
 export interface ModuleNodes {
   component: React.FC;
@@ -32,19 +33,19 @@ export const modules: ModuleNodes[] = [
   },
   {
     component: FinancePage,
-    url: "/finance/account",
+    url: "/finance",
     pageTitle: "Finance",
     icon: require("./assets/images/finance.svg"),
     name: "Finance",
     childModule: [
       {
-        component: FinancePage,
+        component: FinanceAcountPage,
         url: "/finance/account",
         pageTitle: "All Finance Account",
         name: "Account",
       },
       {
-        component: FinancePage,
+        component: FinanceAcountPage,
         url: "/finance/transaction",
         pageTitle: "All Finance Transactions",
         name: "Transactions",
@@ -67,21 +68,27 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Route exact path="/login">
-        <LoginPage />
-      </Route>
-      <Route exact path={modules.map((module) => module.url)}>
-        <MainLayout>
-          {modules.map((module, i) => {
-            const ChildComponent = module.component;
-            return (
-              <ProtectedRoute key={i} exact path={module.url}>
-                <ChildComponent />
-              </ProtectedRoute>
-            );
-          })}
-        </MainLayout>
-      </Route>
+      <Switch>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route path={modules.map((module) => module.url)}>
+          <MainLayout>
+            {modules.map((module, i) => {
+              const ChildComponent = module.component;
+              return (
+                <ProtectedRoute
+                  key={i}
+                  exact={module.childModule ? false : true}
+                  path={module.url}
+                >
+                  <ChildComponent />
+                </ProtectedRoute>
+              );
+            })}
+          </MainLayout>
+        </Route>
+      </Switch>
     </div>
   );
 };

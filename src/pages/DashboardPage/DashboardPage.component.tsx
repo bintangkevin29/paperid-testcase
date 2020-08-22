@@ -9,6 +9,7 @@ const DashboardPage: React.FC = () => {
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
+      Dashboard
     </div>
   );
 };

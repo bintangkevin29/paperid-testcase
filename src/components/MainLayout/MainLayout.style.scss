@@ -4,7 +4,7 @@
   color: #12405d;
 
   &__inner {
-    margin: 0!important;
+    margin: 0 !important;
   }
 
   &__content {
@@ -39,5 +39,16 @@
   &__pageContent {
     width: 100%;
     padding: 30px 0px;
+  }
+
+  &__subPageNav {
+    width: 100%;
+    border-bottom: 1px solid #00000029;
+    padding: 20px 50px;
+    margin-bottom: 30px;
+    a {
+      padding: 0px 20px;
+      @extend %link;
+    }
   }
 }

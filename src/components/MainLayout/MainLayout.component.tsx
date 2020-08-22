@@ -4,14 +4,21 @@ import "./MainLayout.style.scss";
 import Sidebar from "../Sidebar";
 import { Col, Row } from "react-bootstrap";
 import TopNav from "../TopNav/TopNav.component";
-import { modules } from "../../App";
-import { useLocation } from "react-router-dom";
+import { modules, ModuleNodes } from "../../App";
+import { useLocation, Link, Route } from "react-router-dom";
 
 const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const location = useLocation();
-  const pageTitle: string | undefined = modules
-    .find((module) => module.url === location.pathname)
-    ?.title.toUpperCase();
+  const { pathname } = location;
+
+  const parentPath = pathname.substring(0, pathname.lastIndexOf("/"));
+
+  const path = parentPath === "" ? pathname : parentPath;
+
+  let selectedModule = modules.find((module) => module.url === path);
+
+  let pageTitle = selectedModule?.pageTitle;
+  const subPages: ModuleNodes[] | undefined = selectedModule?.childModule;
 
   return (
     <div className="mainLayout">
@@ -25,10 +32,36 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
               <TopNav />
             </div>
             <div className="mainLayout__mainContent">
+              {subPages && (
+                <div className="mainLayout__subPageNav">
+                  {subPages.map((subPage, i) => (
+                    <Link key={i} to={subPage.url}>
+                      {subPage.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
               <div className="mainLayout__pageTitleContainer">
                 <span className="mainLayout__pageTitle">{pageTitle}</span>
               </div>
-              <div className="mainLayout__pageContent">{children}</div>
+              <div className="mainLayout__pageContent">
+                {subPages ? (
+                  <Route path={subPages.map((subPage) => subPage.url)}>
+                    {subPages.map((subPage) => (
+                      <Route
+                        exact
+                        path={subPage.url}
+                        render={() => {
+                          const ChildComponent = subPage.component;
+                          return <ChildComponent />;
+                        }}
+                      />
+                    ))}
+                  </Route>
+                ) : (
+                  children
+                )}
+              </div>
             </div>
           </div>
         </Col>

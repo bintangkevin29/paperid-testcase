@@ -1,9 +1,7 @@
 import React from "react";
-
-import "./FinancePage.style.scss";
-
+ 
 const FinancePage: React.FC = () => {
-  return <div></div>;
+  return <div>Finance Page</div>;
 };
 
 export default FinancePage;

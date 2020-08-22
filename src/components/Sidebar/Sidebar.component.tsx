@@ -4,20 +4,9 @@ import Logo from "../Logo";
 
 import "./Sidebar.style.scss";
 import { Link } from "react-router-dom";
+import { modules } from "../../App";
 
 const Sidebar: React.FC = () => {
-  const navItems: { title: string; icon: string; url: string }[] = [
-    {
-      title: "Dashboard",
-      icon: require("../../assets/images/dashboard.svg"),
-      url: "/",
-    },
-    {
-      title: "Finance",
-      icon: require("../../assets/images/finance.svg"),
-      url: "/finance",
-    },
-  ];
   return (
     <div className="sidebar">
       <div className="sidebar__backgroundImageContainer">
@@ -32,10 +21,11 @@ const Sidebar: React.FC = () => {
         <Logo className="sidebar__logo" />
       </div>
       <div className="sidebar__nav">
-        {navItems.map((navItem, i) => (
+        {modules.map((navItem, i) => (
+          // navItem.childModule ? navItem.childModule[0].url :
           <Link key={i} className="sidebar__navItem" to={navItem.url}>
-            <img alt={navItem.title} src={navItem.icon} />
-            {navItem.title}
+            <img alt={navItem.name} src={navItem.icon} />
+            {navItem.name}
           </Link>
         ))}
       </div>
