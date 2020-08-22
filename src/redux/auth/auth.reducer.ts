@@ -6,6 +6,7 @@ export interface AuthStateProps {
   token: string | undefined;
   errMsg: string | undefined;
   username: string | undefined;
+  lastLogin: string | undefined;
 }
 
 const INIT_STATE: AuthStateProps = {
@@ -14,6 +15,7 @@ const INIT_STATE: AuthStateProps = {
   token: undefined,
   errMsg: undefined,
   username: undefined,
+  lastLogin: undefined,
 };
 
 const authReducer = (
@@ -40,6 +42,7 @@ const authReducer = (
         name: action.payload.name,
         token: action.payload.token,
         username: action.payload.username,
+        lastLogin: action.payload.last_login,
       };
     case "AUTH_FLUSH":
       return {

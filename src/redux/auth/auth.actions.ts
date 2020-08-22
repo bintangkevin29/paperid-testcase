@@ -5,6 +5,7 @@ interface UserNodes {
   name: string;
   token: string;
   username: string;
+  last_login: string;
 }
 
 export type AuthActions =
@@ -38,6 +39,7 @@ const fetchLoginSuccess = (data: UserNodes, username: string): AuthActions => ({
     name: data.name,
     token: data.token,
     username: username,
+    last_login: data.last_login,
   },
 });
 

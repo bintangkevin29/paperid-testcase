@@ -1,14 +1,18 @@
 @import "../../variables.scss";
 
 .mainLayout {
+  color: #12405d;
+
   &__inner {
     margin: 0;
   }
 
   &__content {
-    background-color: #F5FAFE;
+    background-color: #f5fafe;
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__sidebarContainer {
@@ -17,5 +21,9 @@
 
   &__contentContainer {
     padding: 0;
+  }
+
+  &__topNav {
+    width: 100%;
   }
 }
