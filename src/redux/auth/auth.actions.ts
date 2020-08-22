@@ -43,7 +43,7 @@ const fetchLoginSuccess = (data: UserNodes, username: string): AuthActions => ({
   },
 });
 
-const flushAuthData = (): AuthActions => ({
+export const flushAuthData = (): AuthActions => ({
   type: "AUTH_FLUSH",
 });
 

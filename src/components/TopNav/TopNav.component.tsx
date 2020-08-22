@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 
 import "./TopNav.style.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/root.reducer";
+import { flushAuthData } from "../../redux/auth/auth.actions";
 
 const TopNav: React.FC<{ className?: string }> = ({ className }) => {
   const userData = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState<Boolean>(false);
+
+  const handleLogout = (): void => {
+    dispatch(flushAuthData());
+  };
   return (
     <div className={`topNav ${className}`}>
       <div className="topNav__badge" onClick={() => setShowMenu(!showMenu)}>
@@ -34,6 +40,12 @@ const TopNav: React.FC<{ className?: string }> = ({ className }) => {
           </span>
           <span className="topNav__menuItems topNav__menuItem--content">
             {userData.lastLogin}
+          </span>
+          <span
+            onClick={() => handleLogout()}
+            className="topNav__menuItems topNav__menuItem--contentLogout"
+          >
+            Logout
           </span>
         </div>
       </div>

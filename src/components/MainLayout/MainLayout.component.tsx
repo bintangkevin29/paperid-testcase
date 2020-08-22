@@ -6,6 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import TopNav from "../TopNav/TopNav.component";
 import { modules, ModuleNodes } from "../../App";
 import { useLocation, Link, Route } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.component";
 
 const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const location = useLocation();
@@ -47,16 +48,14 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
               <div className="mainLayout__pageContent">
                 {subPages ? (
                   <Route path={subPages.map((subPage) => subPage.url)}>
-                    {subPages.map((subPage) => (
-                      <Route
-                        exact
-                        path={subPage.url}
-                        render={() => {
-                          const ChildComponent = subPage.component;
-                          return <ChildComponent />;
-                        }}
-                      />
-                    ))}
+                    {subPages.map((subPage, i) => {
+                      const ChildComponent = subPage.component;
+                      return (
+                        <ProtectedRoute key={i} exact path={subPage.url}>
+                          <ChildComponent />
+                        </ProtectedRoute>
+                      );
+                    })}
                   </Route>
                 ) : (
                   children
