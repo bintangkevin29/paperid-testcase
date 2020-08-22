@@ -22,8 +22,11 @@ const Sidebar: React.FC = () => {
       </div>
       <div className="sidebar__nav">
         {modules.map((navItem, i) => (
-          // navItem.childModule ? navItem.childModule[0].url :
-          <Link key={i} className="sidebar__navItem" to={navItem.url}>
+          <Link
+            key={i}
+            className="sidebar__navItem"
+            to={navItem.childModule ? navItem.childModule[0].url : navItem.url}
+          >
             <img alt={navItem.name} src={navItem.icon} />
             {navItem.name}
           </Link>

@@ -18,7 +18,13 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   let selectedModule = modules.find((module) => module.url === path);
 
-  let pageTitle = selectedModule?.pageTitle;
+  let selectedChildTitle = selectedModule?.childModule?.find(
+    (module) => module.url === pathname
+  )?.pageTitle;
+
+  let pageTitle = selectedChildTitle
+    ? selectedChildTitle
+    : selectedModule?.pageTitle;
   const subPages: ModuleNodes[] | undefined = selectedModule?.childModule;
 
   return (
