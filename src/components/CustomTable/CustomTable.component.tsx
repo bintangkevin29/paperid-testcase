@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
+import CustomPopupMenu from "../CustomPopupMenu";
 
 interface TableNode {
   columns: {
@@ -15,6 +16,29 @@ interface TableNode {
 interface Props {
   tableData: TableNode;
 }
+
+const TableRow: React.FC<{ data: object; tableData: TableNode }> = ({ data, tableData }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  return (
+    <Fragment>
+      {tableData.columns.map((column, j) => (
+        <td key={j}>{data[column.key]}</td>
+      ))}
+      <td>
+        <div className="customTable__action">
+          <CustomButton
+            variant="secondary"
+            onClick={() => setShowMenu(!showMenu)}
+            className="customTable__button"
+          >
+            Actions
+          </CustomButton>
+          <CustomPopupMenu show={showMenu}>Test</CustomPopupMenu>
+        </div>
+      </td>
+    </Fragment>
+  );
+};
 
 const CustomTable: React.FC<Props> = ({ tableData }) => {
   return (
@@ -31,14 +55,7 @@ const CustomTable: React.FC<Props> = ({ tableData }) => {
         <tbody>
           {tableData.data.map((dt, i) => (
             <tr key={i}>
-              {tableData.columns.map((column, j) => (
-                <td key={j}>{dt[column.key]}</td>
-              ))}
-              <td>
-                <CustomButton variant="secondary" className="customTable__button">
-                  Actions
-                </CustomButton>
-              </td>
+              <TableRow data={dt} tableData={tableData} />
             </tr>
           ))}
         </tbody>
