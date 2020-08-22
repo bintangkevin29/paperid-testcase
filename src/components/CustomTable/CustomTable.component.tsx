@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from "react";
+import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
+import VisibilityRoundedIcon from "@material-ui/icons/VisibilityRounded";
+import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
@@ -33,7 +36,17 @@ const TableRow: React.FC<{ data: object; tableData: TableNode }> = ({ data, tabl
           >
             Actions
           </CustomButton>
-          <CustomPopupMenu show={showMenu}>Test</CustomPopupMenu>
+          <CustomPopupMenu className="customTable__popupMenu" show={showMenu}>
+            <div className="customTable__popupMenuItems">
+              <VisibilityRoundedIcon className="customTable__popupMenuIcon" /> <span>View</span>
+            </div>
+            <div className="customTable__popupMenuItems">
+              <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
+            </div>
+            <div className="customTable__popupMenuItems">
+              <DeleteRoundedIcon className="customTable__popupMenuIcon" /> <span>Delete</span>
+            </div>
+          </CustomPopupMenu>
         </div>
       </td>
     </Fragment>

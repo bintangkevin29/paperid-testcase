@@ -40,4 +40,26 @@
   &__action {
     position: relative;
   }
+
+  &__popupMenu {
+    padding: 10px 0px;
+    &::after {
+      display: none;
+    }
+  }
+
+  &__popupMenuItems {
+    padding: 10px 30px;
+    transition: 0.2s color ease;
+    transition: 0.2s background-color ease;
+    cursor: pointer;
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+
+  &__popupMenuIcon {
+    margin-right: 20px;
+  }
 }
