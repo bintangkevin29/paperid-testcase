@@ -1,4 +1,22 @@
 @import "../../variables.scss";
 
 .customTable {
+  thead {
+    font-size: 14px;
+    th {
+      border: 0;
+      font-weight: 500;
+      padding: 20px;
+    }
+  }
+  tbody {
+    background: #fff;
+    box-shadow: 0 10px 20px rgba($color: $color-primary, $alpha: 0.1);
+    td {
+      padding: 20px;
+      border: 0;
+      font-weight: 500;
+      font-size: 13px;
+    }
+  }
 }
