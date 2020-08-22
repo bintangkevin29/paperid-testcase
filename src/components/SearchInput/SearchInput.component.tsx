@@ -7,10 +7,12 @@ const SearchInput: React.FC<{
   label?: string;
   type?: "text";
   className?: string;
-}> = ({ label = "Search", type = "text", className }) => {
+  onChange?: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+}> = ({ label = "Search", type = "text", className, onChange }) => {
   return (
     <div className={`searchInput ${className}`}>
       <Form.Control
+        onChange={onChange}
         className="searchInput__field"
         placeholder={label}
         type={type}
