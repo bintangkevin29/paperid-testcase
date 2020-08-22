@@ -8,6 +8,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/root.reducer";
 import MainLayout from "./components/MainLayout";
 
+interface ModuleNodes {
+  component: React.FC;
+  url: string;
+  title: string;
+}
+
+export const modules: ModuleNodes[] = [
+  {
+    component: DashboardPage,
+    url: "/",
+    title: "Dashboard",
+  },
+];
+
 const App: React.FC = () => {
   const userToken = useSelector((state: RootState) => state.auth.token);
   const history = useHistory();
@@ -18,18 +32,6 @@ const App: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToken]);
-
-  interface ModuleNodes {
-    component: React.FC;
-    url: string;
-  }
-
-  const modules: ModuleNodes[] = [
-    {
-      component: DashboardPage,
-      url: "/",
-    },
-  ];
 
   return (
     <div className="App">

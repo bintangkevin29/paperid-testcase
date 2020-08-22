@@ -4,8 +4,15 @@ import "./MainLayout.style.scss";
 import Sidebar from "../Sidebar";
 import { Col, Row } from "react-bootstrap";
 import TopNav from "../TopNav/TopNav.component";
+import { modules } from "../../App";
+import { useLocation } from "react-router-dom";
 
 const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const location = useLocation();
+  const pageTitle: string | undefined = modules
+    .find((module) => module.url === location.pathname)
+    ?.title.toUpperCase();
+
   return (
     <div className="mainLayout">
       <Row className="mainLayout__inner">
@@ -17,7 +24,12 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
             <div className="mainLayout__topNav">
               <TopNav />
             </div>
-            {children}
+            <div className="mainLayout__mainContent">
+              <div className="mainLayout__pageTitleContainer">
+                <span className="mainLayout__pageTitle">{pageTitle}</span>
+              </div>
+              {children}
+            </div>
           </div>
         </Col>
       </Row>
