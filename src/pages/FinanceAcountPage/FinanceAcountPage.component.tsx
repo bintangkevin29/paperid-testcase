@@ -26,17 +26,12 @@ const FinanceAcountPage: React.FC = () => {
         header: "Type",
         key: "type",
       },
-      {
-        header: "Last Modified",
-        key: "last_modified",
-      },
     ],
     data: financeAccountData.map((finance) => {
       const data = {
         name: finance.name,
         desc: finance.description,
         type: finance.type,
-        last_modified: finance.last_modified,
       };
       return data;
     }),
