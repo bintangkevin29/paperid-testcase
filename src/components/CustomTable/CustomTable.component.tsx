@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, Dispatch } from "react";
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
 import VisibilityRoundedIcon from "@material-ui/icons/VisibilityRounded";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
@@ -6,6 +6,7 @@ import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
 import CustomPopupMenu from "../CustomPopupMenu";
+import { FinanceAccountTypes } from "../../redux/financeAccount/financeAccount.actions";
 
 interface TableNode {
   columns: {
@@ -13,14 +14,19 @@ interface TableNode {
     key: string;
   }[];
   data: object[];
-  details: object[];
+  details: any;
+  dispatchDelete: (id: string) => void;
 }
 
 interface Props {
   tableData: TableNode;
 }
 
-const TableRow: React.FC<{ data: object; tableData: TableNode }> = ({ data, tableData }) => {
+const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> = ({
+  data,
+  tableData,
+  index,
+}) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <Fragment>
@@ -43,7 +49,10 @@ const TableRow: React.FC<{ data: object; tableData: TableNode }> = ({ data, tabl
             <div className="customTable__popupMenuItems">
               <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
             </div>
-            <div className="customTable__popupMenuItems">
+            <div
+              onClick={() => tableData.dispatchDelete(tableData.details[index].id)}
+              className="customTable__popupMenuItems"
+            >
               <DeleteRoundedIcon className="customTable__popupMenuIcon" /> <span>Delete</span>
             </div>
           </CustomPopupMenu>
@@ -68,7 +77,7 @@ const CustomTable: React.FC<Props> = ({ tableData }) => {
         <tbody>
           {tableData.data.map((dt, i) => (
             <tr key={i}>
-              <TableRow data={dt} tableData={tableData} />
+              <TableRow data={dt} index={i} tableData={tableData} />
             </tr>
           ))}
         </tbody>

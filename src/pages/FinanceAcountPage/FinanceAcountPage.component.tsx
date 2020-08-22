@@ -5,10 +5,12 @@ import "./FinanceAcountPage.style.scss";
 import SearchInput from "../../components/SearchInput";
 import CustomButton from "../../components/CustomButton";
 import CustomTable from "../../components/CustomTable";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/root.reducer";
+import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
 
 const FinanceAcountPage: React.FC = () => {
+  const dispatch = useDispatch();
   const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
   const tableData = {
     columns: [
@@ -39,6 +41,7 @@ const FinanceAcountPage: React.FC = () => {
       return data;
     }),
     details: financeAccountData,
+    dispatchDelete: (id: string) => dispatch(financeAccountDelete(id)),
   };
 
   return (
