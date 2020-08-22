@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 
 import authReducer from "./auth/auth.reducer";
-import { persistReducer } from "redux-persist";
+import financeAccountReducer from "./financeAccount/financeAccount.reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  financeAccount: financeAccountReducer,
 });
 
 const persistConfig = {
