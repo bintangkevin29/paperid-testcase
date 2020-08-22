@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+.searchInput {
+  position: relative;
+  &__field {
+    border-radius: 30px;
+    padding: 20px;
+    border: 0;
+    box-shadow: 0 10px 20px rgba($color: $color-primary, $alpha: 0.1);
+    padding-right: 50px;
+  }
+  &__icon {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 50%;
+  }
+}
