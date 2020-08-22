@@ -1,4 +1,4 @@
-import React, { Fragment, useState, Dispatch } from "react";
+import React, { Fragment, useState } from "react";
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
 import VisibilityRoundedIcon from "@material-ui/icons/VisibilityRounded";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
@@ -6,7 +6,6 @@ import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
 import CustomPopupMenu from "../CustomPopupMenu";
-import { FinanceAccountTypes } from "../../redux/financeAccount/financeAccount.actions";
 
 interface TableNode {
   columns: {
