@@ -5,8 +5,13 @@ import "./FinanceAcountPage.style.scss";
 import SearchInput from "../../components/SearchInput";
 import CustomButton from "../../components/CustomButton";
 import CustomTable from "../../components/CustomTable";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/root.reducer";
 
 const FinanceAcountPage: React.FC = () => {
+  const financeAccountData = useSelector(
+    (state: RootState) => state.financeAccount.data
+  );
   const tableData = {
     columns: [
       {
@@ -25,33 +30,27 @@ const FinanceAcountPage: React.FC = () => {
         header: "Last Modified",
         key: "last_modified",
       },
-      {
-        header: "Created At",
-        key: "created_at",
-      },
-      {
-        header: "Deleted At",
-        key: "deleted_at",
-      },
     ],
-    data: [
-      {
-        name: "Kevin",
-        desc: "Kevin",
-        type: "Kevin",
-        last_modified: "Kevin",
-        created_at: "Kevin",
-        deleted_at: "Kevin",
-      },
-    ],
+    data: financeAccountData.map((finance) => {
+      const data = {
+        name: finance.name,
+        desc: finance.description,
+        type: finance.type,
+        last_modified: finance.last_modified,
+      };
+      return data;
+    }),
   };
+
+  console.log(tableData);
+
   return (
     <div className="financeAccountPage">
       <div className="financeAccountPage__subHeader">
         <SearchInput className="financeAccountPage__search" />
         <CustomButton>Create New Account</CustomButton>
       </div>
-      <CustomTable tableData={tableData} />
+      {tableData?.data && <CustomTable tableData={tableData} />}
     </div>
   );
 };
