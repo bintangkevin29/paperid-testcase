@@ -36,7 +36,14 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
               {subPages && (
                 <div className="mainLayout__subPageNav">
                   {subPages.map((subPage, i) => (
-                    <Link key={i} to={subPage.url}>
+                    <Link
+                      key={i}
+                      className={`mainLayout__subPageItem ${
+                        subPage.url === pathname &&
+                        "mainLayout__subPageItem--active"
+                      }`}
+                      to={subPage.url}
+                    >
                       {subPage.name}
                     </Link>
                   ))}
