@@ -42,8 +42,6 @@ const FinanceAcountPage: React.FC = () => {
     }),
   };
 
-  console.log(tableData);
-
   return (
     <div className="financeAccountPage">
       <div className="financeAccountPage__subHeader">
