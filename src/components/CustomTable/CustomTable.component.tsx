@@ -5,7 +5,7 @@ import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
-import CustomPopupMenu from "../CustomPopupMenu";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 interface TableNode {
   columns: {
@@ -40,24 +40,36 @@ const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> 
       ))}
       <td>
         <div className="customTable__action">
-          <CustomButton
-            variant="secondary"
-            onClick={() => setShowMenu(!showMenu)}
-            className="customTable__button"
+          <OverlayTrigger
+            show={showMenu}
+            trigger="click"
+            key="bottom"
+            placement="bottom"
+            overlay={
+              <Popover id="popover-positioned-bottom">
+                <Popover.Content className="customTable__popupMenu">
+                  <div className="customTable__popupMenuItems">
+                    <VisibilityRoundedIcon className="customTable__popupMenuIcon" />{" "}
+                    <span>View</span>
+                  </div>
+                  <div className="customTable__popupMenuItems">
+                    <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
+                  </div>
+                  <div onClick={handleDistpachDelete} className="customTable__popupMenuItems">
+                    <DeleteRoundedIcon className="customTable__popupMenuIcon" /> <span>Delete</span>
+                  </div>
+                </Popover.Content>
+              </Popover>
+            }
           >
-            Actions
-          </CustomButton>
-          <CustomPopupMenu className="customTable__popupMenu" show={showMenu}>
-            <div className="customTable__popupMenuItems">
-              <VisibilityRoundedIcon className="customTable__popupMenuIcon" /> <span>View</span>
-            </div>
-            <div className="customTable__popupMenuItems">
-              <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
-            </div>
-            <div onClick={handleDistpachDelete} className="customTable__popupMenuItems">
-              <DeleteRoundedIcon className="customTable__popupMenuIcon" /> <span>Delete</span>
-            </div>
-          </CustomPopupMenu>
+            <CustomButton
+              variant="secondary"
+              onClick={() => setShowMenu(!showMenu)}
+              className="customTable__button"
+            >
+              Actions
+            </CustomButton>
+          </OverlayTrigger>
         </div>
       </td>
     </Fragment>
