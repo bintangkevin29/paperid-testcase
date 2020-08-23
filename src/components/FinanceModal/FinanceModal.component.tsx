@@ -81,16 +81,15 @@ const FinanceModal: React.FC<Props> = ({
           />
         ))}
         <div className="financeModal__actions">
-          {mode === "add" ||
-            (mode === "edit" && (
-              <CustomButton
-                className="financeModal__button financeModal__button--submit"
-                variant="secondary"
-                type="submit"
-              >
-                Simpan
-              </CustomButton>
-            ))}
+          {(mode === "add" || mode === "edit") && (
+            <CustomButton
+              className="financeModal__button financeModal__button--submit"
+              variant="secondary"
+              type="submit"
+            >
+              Simpan
+            </CustomButton>
+          )}
           <CustomButton
             onClick={() => setShow(false)}
             className="financeModal__button financeModal__button--cancel"
