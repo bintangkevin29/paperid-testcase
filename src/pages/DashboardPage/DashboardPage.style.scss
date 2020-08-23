@@ -1,4 +1,18 @@
 @import "../../variables.scss";
 
 .dashboardPage {
+  &__transactionSummary {
+    display: flex;
+    flex-direction: column;
+  }
+  &__cardHeading {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  &__chartContainer {
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+  }
 }
