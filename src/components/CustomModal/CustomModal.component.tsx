@@ -9,9 +9,17 @@ interface Props {
   children: ReactNode;
   title: string;
   className?: string;
+  badge?: string | undefined;
 }
 
-const CustomModal: React.FC<Props> = ({ showModal, setShowModal, children, title, className }) => {
+const CustomModal: React.FC<Props> = ({
+  showModal,
+  setShowModal,
+  children,
+  title,
+  className,
+  badge = undefined,
+}) => {
   return (
     <Modal
       className={`customModal ${className}`}
@@ -20,12 +28,11 @@ const CustomModal: React.FC<Props> = ({ showModal, setShowModal, children, title
     >
       <Modal.Header closeButton>
         <div className="customModal__titleContainer">
-          <Badge variant="lightBlue">Finance</Badge>
+          {badge && <Badge variant="lightBlue">{badge}</Badge>}
           <Modal.Title>{title}</Modal.Title>
         </div>
       </Modal.Header>
       <Modal.Body>{children}</Modal.Body>
-      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 };
