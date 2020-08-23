@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 import "./DashboardPage.style.scss";
+import CustomChart from "../../components/CustomChart";
 
 const DashboardPage: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const DashboardPage: React.FC = () => {
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      Dashboard
+      <CustomChart />
     </div>
   );
 };
