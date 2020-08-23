@@ -35,7 +35,7 @@ const FinanceModal: React.FC<Props> = ({
   show = false,
   setShow,
   options,
-  mode = "edit",
+  mode = "add",
 }) => {
   const [formData, setFormData] = useState<object>(
     options.fields.map((field) => ({
