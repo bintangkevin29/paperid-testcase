@@ -28,15 +28,15 @@ const FinanceTransactionsPage: React.FC = () => {
   const tableData = {
     columns: [
       {
-        header: "Traction Date",
+        header: "Transaction Date",
         key: "trDate",
       },
       {
-        header: "Finance Account",
+        header: "Type",
         key: "fnAccount",
       },
       {
-        header: "Finance AccountName",
+        header: "Finance Account Name",
         key: "fnAccountName",
       },
       {
