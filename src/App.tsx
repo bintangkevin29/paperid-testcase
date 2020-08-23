@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, useHistory, useLocation, Switch, useParams } from "react-router-dom";
+import { Route, useHistory, useLocation, Switch } from "react-router-dom";
 import queryString from "query-string";
 
 import "./App.scss";
@@ -60,7 +60,6 @@ const App: React.FC = () => {
   const userToken = useSelector((state: RootState) => state.auth.token);
   const history = useHistory();
   const location = useLocation();
-  const redirect = useParams();
 
   const urlSearch = window.location.search;
   const params = queryString.parse(urlSearch);
