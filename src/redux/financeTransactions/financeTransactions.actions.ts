@@ -24,7 +24,7 @@ export const fetchFinanceTransactionsStartAsync = () => {
       process.env.REACT_APP_API_URL + "/finances?sort_field=id",
       tokenHeader
     );
-    dispatch(fetchFinanceTransactionsSuccess(fetchedData.data));
+    dispatch(fetchFinanceTransactionsSuccess(fetchedData.data.data));
   };
 };
 

@@ -15,34 +15,46 @@ import { fetchFinanceTransactionsStartAsync } from "../../redux/financeTransacti
 const FinanceTransactionsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
+  const financeTransactionsData = useSelector((state: RootState) => state.financeTransactions.data);
   useEffect(() => {
     dispatch(fetchFinanceTransactionsStartAsync());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const tableData = {
     columns: [
       {
-        header: "Name",
-        key: "name",
+        header: "Traction Date",
+        key: "trDate",
       },
       {
-        header: "Description",
-        key: "desc",
+        header: "Finance Account",
+        key: "fnAccount",
       },
       {
-        header: "Type",
-        key: "type",
+        header: "Finance AccountName",
+        key: "fnAccountName",
+      },
+      {
+        header: "Reference",
+        key: "ref",
+      },
+      {
+        header: "Amount",
+        key: "amt",
       },
     ],
-    data: financeAccountData.map((finance) => {
+    data: financeTransactionsData.map((finance) => {
       const data = {
-        name: finance.name,
-        desc: finance.description,
-        type: finance.type,
+        trDate: finance.created_at,
+        fnAccount: finance.finance_account_type,
+        fnAccountName: finance.finance_account_name,
+        ref: finance.title,
+        amt: finance.debit_amount,
       };
       return data;
     }),
-    details: financeAccountData,
+    details: financeTransactionsData,
     dispatchDelete: (id: string) => dispatch(financeAccountDelete(id)),
   };
 

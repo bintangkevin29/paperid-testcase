@@ -18,7 +18,7 @@ export interface FinanceTransactionsDataNode {
 interface FinanceTransactionsStateNode {
   isFetching: boolean;
   errorMessage: string | undefined;
-  data: FinanceTransactionsDataNode[] | [];
+  data: FinanceTransactionsDataNode[];
 }
 
 const INIT_STATE = {
