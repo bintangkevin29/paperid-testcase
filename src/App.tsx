@@ -76,7 +76,6 @@ const App: React.FC = () => {
         history.push("/");
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToken]);
 
   return (
