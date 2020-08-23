@@ -64,7 +64,7 @@ const CustomChart: React.FC = () => {
     // space of its parent element automatically
     <div
       style={{
-        width: "400px",
+        width: "100%",
         height: "300px",
       }}
     >
