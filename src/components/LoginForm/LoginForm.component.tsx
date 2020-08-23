@@ -35,7 +35,6 @@ const LoginForm: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    console.log(value);
     if (errorMessage) {
       dispatch(fetchLoginError(undefined));
     }

@@ -67,8 +67,6 @@ export const financeTransactionsDelete = (id: number) => {
 };
 
 export const financeTransactionsAdd = (data, edit) => {
-  console.log(data);
-
   return async (dispatch) => {
     dispatch(fetchFinanceTransactionsError(""));
     const tokenHeader = getToken();

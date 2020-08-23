@@ -50,10 +50,6 @@ const FinanceModal: React.FC<Props> = ({
     setSafeToRender(true);
   }
 
-  // useEffect(() => {
-  //   console.log(formData);
-  // }, [formData]);
-
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData({
