@@ -26,7 +26,7 @@ interface Props {
   setShow: (boolean) => void;
   show: boolean;
   options: OptionsProps;
-  mode?: "edit" | "view" | "delete";
+  mode?: "add" | "edit" | "view" | "delete";
 }
 
 const FinanceModal: React.FC<Props> = ({
@@ -81,15 +81,16 @@ const FinanceModal: React.FC<Props> = ({
           />
         ))}
         <div className="financeModal__actions">
-          {mode === "edit" && (
-            <CustomButton
-              className="financeModal__button financeModal__button--submit"
-              variant="secondary"
-              type="submit"
-            >
-              Simpan
-            </CustomButton>
-          )}
+          {mode === "add" ||
+            (mode === "edit" && (
+              <CustomButton
+                className="financeModal__button financeModal__button--submit"
+                variant="secondary"
+                type="submit"
+              >
+                Simpan
+              </CustomButton>
+            ))}
           <CustomButton
             onClick={() => setShow(false)}
             className="financeModal__button financeModal__button--cancel"
