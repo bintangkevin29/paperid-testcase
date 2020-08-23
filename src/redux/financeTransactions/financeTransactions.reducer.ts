@@ -43,6 +43,12 @@ const financeTransactionsReducer = (
         isFetching: false,
         data: action.payload,
       };
+    case "FINANCE_TRANSACTIONS_ERROR":
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }

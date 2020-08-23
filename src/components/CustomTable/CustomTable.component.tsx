@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
 import VisibilityRoundedIcon from "@material-ui/icons/VisibilityRounded";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
@@ -54,6 +54,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
         label: "ID",
         placeholder: "",
         readOnly: true,
+        hidden: true,
       },
     ],
     submitDispatch: (data?, edit?) => modalOptions.submitDispatch(data, edit),
@@ -79,8 +80,8 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
             overlay={
               <Popover id="popover-positioned-bottom">
                 <Popover.Content className="customTable__popupMenu">
-                  <div className="customTable__popupMenuItems">
-                    <VisibilityRoundedIcon className="customTable__popupMenuIcon" />{" "}
+                  <div onClick={handleShowModal} className="customTable__popupMenuItems">
+                    <VisibilityRoundedIcon className="customTable__popupMenuIcon" />
                     <span>View</span>
                   </div>
                   <div onClick={handleShowModal} className="customTable__popupMenuItems">

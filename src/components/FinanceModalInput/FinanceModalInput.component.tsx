@@ -28,7 +28,7 @@ const FinanceModalInput: React.FC<Props> = ({
 }) => {
   return (
     <Form.Group
-      className={`financeModalInput ${className} ${hidden && "financeModalInput--hidden"}`}
+      className={`financeModalInput ${className} ${hidden ? "financeModalInput--hidden" : ""}`}
     >
       <Form.Label className="financeModalInput__label">
         {label} {required && <span className="financeModalInput__requiredIndicator">*</span>}

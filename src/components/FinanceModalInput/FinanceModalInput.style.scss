@@ -3,7 +3,7 @@
 .financeModalInput {
   color: $color-dark;
   &--hidden {
-    display: none;
+    display: none!important;
   }
   &__label {
     font-size: 13px;

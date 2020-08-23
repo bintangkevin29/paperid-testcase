@@ -23,6 +23,10 @@ export type FinanceTransactionsTypes =
   | {
       type: "FINANCE_TRANSACTIONS_ADD";
       payload: FinanceTransactionsInputData;
+    }
+  | {
+      type: "FINANCE_TRANSACTIONS_ERROR";
+      payload: string;
     };
 
 const fetchFinanceTransactionsStart = (): FinanceTransactionsTypes => ({
@@ -33,6 +37,11 @@ const fetchFinanceTransactionsSuccess = (
   data: FinanceTransactionsDataNode[]
 ): FinanceTransactionsTypes => ({
   type: "FINANCE_TRANSACTIONS_FETCH_SUCCESS",
+  payload: data,
+});
+
+const fetchFinanceTransactionsError = (data: string): FinanceTransactionsTypes => ({
+  type: "FINANCE_TRANSACTIONS_ERROR",
   payload: data,
 });
 
@@ -61,6 +70,7 @@ export const financeTransactionsAdd = (data, edit) => {
   console.log(data);
 
   return async (dispatch) => {
+    dispatch(fetchFinanceTransactionsError(""));
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
     const postedData = {
@@ -74,7 +84,7 @@ export const financeTransactionsAdd = (data, edit) => {
       `${apiUrl}/finances${edit ? `/${data.id}` : ""}`,
       JSON.stringify(postedData),
       tokenHeader
-    );
+    ).catch((err) => dispatch(fetchFinanceTransactionsError(err.message)));
     dispatch(fetchFinanceTransactionsStartAsync());
   };
 };

@@ -43,16 +43,16 @@ const FinanceModal: React.FC<Props> = ({
 
   if (!formData) {
     let temp;
-    options.fields.map((field) => {
+    options.fields.forEach((field) => {
       temp = { ...temp, [field.name]: field.value };
     });
     setFormData(temp);
     setSafeToRender(true);
   }
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -62,11 +62,11 @@ const FinanceModal: React.FC<Props> = ({
     });
   };
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     if (options?.submitDispatch) {
       e.preventDefault();
 
-      options.submitDispatch(formData, mode === "edit");
+      await options.submitDispatch(formData, mode === "edit");
       setShow(false);
     }
   };
@@ -90,6 +90,7 @@ const FinanceModal: React.FC<Props> = ({
               required={field.required}
               label={field.label}
               value={formData[field.name]}
+              hidden={field.hidden}
             />
           ))}
           <div className="financeModal__actions">
