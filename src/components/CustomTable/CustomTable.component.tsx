@@ -47,7 +47,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
         value: tableData.details[index][field.name],
       })
     ),
-    submitDispatch: (data?) => modalOptions.submitDispatch(data),
+    submitDispatch: (data?, edit?) => modalOptions.submitDispatch(data, edit),
   };
 
   const handleShowModal = () => {

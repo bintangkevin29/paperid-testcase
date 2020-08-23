@@ -57,7 +57,7 @@ export const financeTransactionsDelete = (id: number) => {
   };
 };
 
-export const financeTransactionsAdd = (data) => {
+export const financeTransactionsAdd = (data, edit) => {
   return async (dispatch) => {
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
@@ -68,7 +68,11 @@ export const financeTransactionsAdd = (data) => {
       description: data.description,
       finance_account_id: 1,
     };
-    await Axios.post(apiUrl + "/finances", postedData, tokenHeader);
+    await Axios[edit ? "patch" : "post"](
+      `${apiUrl}/finances${edit ? data.id : ""}`,
+      postedData,
+      tokenHeader
+    );
     dispatch(fetchFinanceTransactionsStartAsync());
   };
 };

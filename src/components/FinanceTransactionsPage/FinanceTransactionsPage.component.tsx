@@ -89,11 +89,11 @@ const FinanceTransactionsPage: React.FC = () => {
         placeholder: "Type Description Here",
       },
     ],
-    submitDispatch: (data: object, edit?: boolean) => modalSubmitDispatch(data),
+    submitDispatch: (data: object, edit?: boolean) => modalSubmitDispatch(data, edit),
   };
 
-  const modalSubmitDispatch = (formData?) => {
-    dispatch(financeTransactionsAdd(formData));
+  const modalSubmitDispatch = (formData?, edit?) => {
+    dispatch(financeTransactionsAdd(formData, edit));
   };
 
   return (
@@ -111,6 +111,7 @@ const FinanceTransactionsPage: React.FC = () => {
         title="Create New Finance"
         show={showModal}
         setShow={() => setShowModal(false)}
+        mode="add"
       />
     </div>
   );
