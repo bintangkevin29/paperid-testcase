@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, useHistory, useLocation, Switch } from "react-router-dom";
+import { Route, useHistory, useLocation, Switch, useParams } from "react-router-dom";
+import queryString from "query-string";
 
 import "./App.scss";
 
@@ -59,10 +60,18 @@ const App: React.FC = () => {
   const userToken = useSelector((state: RootState) => state.auth.token);
   const history = useHistory();
   const location = useLocation();
+  const redirect = useParams();
+
+  const urlSearch = window.location.search;
+  const params = queryString.parse(urlSearch);
 
   useEffect(() => {
     if (userToken && location.pathname === "/login") {
-      history.push("/");
+      if (params) {
+        history.push(decodeURIComponent(params.redirect));
+      } else {
+        history.push("/");
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToken]);
