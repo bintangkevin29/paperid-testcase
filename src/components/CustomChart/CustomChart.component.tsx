@@ -68,7 +68,6 @@ const CustomChart: React.FC = () => {
       <Chart series={series} data={data} axes={axes} tooltip />
     </div>
   );
-  // return <div className="customChart">Test</div>;
 };
 
 export default CustomChart;
