@@ -1,0 +1,8 @@
+@import "../../variables.scss";
+
+.financeModalInput {
+  &__requiredIndicator {
+    color: $color-danger;
+    font-weight: 600;
+  }
+}
