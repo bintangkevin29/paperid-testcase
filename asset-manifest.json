@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/paperid-testcase/static/css/main.5227187d.chunk.css",
+    "main.js": "/paperid-testcase/static/js/main.07089396.chunk.js",
+    "main.js.map": "/paperid-testcase/static/js/main.07089396.chunk.js.map",
+    "runtime-main.js": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js",
+    "runtime-main.js.map": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js.map",
+    "static/js/2.21e1d832.chunk.js": "/paperid-testcase/static/js/2.21e1d832.chunk.js",
+    "static/js/2.21e1d832.chunk.js.map": "/paperid-testcase/static/js/2.21e1d832.chunk.js.map",
+    "index.html": "/paperid-testcase/index.html",
+    "precache-manifest.c48890b714c3930c24d940775286c876.js": "/paperid-testcase/precache-manifest.c48890b714c3930c24d940775286c876.js",
+    "service-worker.js": "/paperid-testcase/service-worker.js",
+    "static/css/main.5227187d.chunk.css.map": "/paperid-testcase/static/css/main.5227187d.chunk.css.map",
+    "static/js/2.21e1d832.chunk.js.LICENSE.txt": "/paperid-testcase/static/js/2.21e1d832.chunk.js.LICENSE.txt",
+    "static/media/Gambar-Untuk-press-Release-02.png": "/paperid-testcase/static/media/Gambar-Untuk-press-Release-02.91f854c7.png",
+    "static/media/Gambar-Untuk-press-Release-02@2x.png": "/paperid-testcase/static/media/Gambar-Untuk-press-Release-02@2x.5a55f095.png",
+    "static/media/Tutorial.svg": "/paperid-testcase/static/media/Tutorial.4b15b459.svg",
+    "static/media/dashboard.svg": "/paperid-testcase/static/media/dashboard.1919cb69.svg",
+    "static/media/finance.svg": "/paperid-testcase/static/media/finance.9c1a3210.svg",
+    "static/media/icon_account_white.svg": "/paperid-testcase/static/media/icon_account_white.7e1ea4fa.svg",
+    "static/media/icon_lock_white.svg": "/paperid-testcase/static/media/icon_lock_white.fed42d91.svg",
+    "static/media/App.scss": "/paperid-testcase/static/media/lato-v16-latin-regular.d1d5e30a.ttf",
+    "static/media/paperlogowhite.svg": "/paperid-testcase/static/media/paperlogowhite.2cb8e86c.svg",
+    "static/media/search.svg": "/paperid-testcase/static/media/search.a4fd8b5f.svg",
+    "static/media/users.svg": "/paperid-testcase/static/media/users.017b26c9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c9b5fd5.js",
+    "static/js/2.21e1d832.chunk.js",
+    "static/css/main.5227187d.chunk.css",
+    "static/js/main.07089396.chunk.js"
+  ]
+}
