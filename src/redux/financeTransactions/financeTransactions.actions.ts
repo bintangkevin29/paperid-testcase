@@ -1,5 +1,4 @@
 import { FinanceTransactionsDataNode } from "./financeTransactions.reducer";
-import { Dispatch } from "redux";
 import { getToken } from "../../helpers/request.helper";
 import Axios from "axios";
 
