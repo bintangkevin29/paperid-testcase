@@ -6,7 +6,7 @@ import { Form } from "react-bootstrap";
 interface Props {
   label: string;
   onChange?: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
-  value?: string;
+  value?: string | number;
   className?: string;
   required?: boolean;
   placeholder?: string;

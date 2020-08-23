@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import CustomModal from "../CustomModal";
 import { Form } from "react-bootstrap";
 import FinanceModalInput from "../FinanceModalInput";
@@ -24,6 +24,7 @@ interface Props {
   options: OptionsProps;
   submitDispatch: (id?) => void;
   mode?: "edit" | "view" | "delete";
+  value?: string | number;
 }
 
 const FinanceModal: React.FC<Props> = ({
@@ -34,6 +35,7 @@ const FinanceModal: React.FC<Props> = ({
   options,
   submitDispatch,
   mode = "edit",
+  value,
 }) => {
   const [formData, setFormData] = useState<object>();
 
@@ -69,6 +71,7 @@ const FinanceModal: React.FC<Props> = ({
             readOnly={field.readOnly}
             required={field.required}
             label={field.label}
+            value={value}
           />
         ))}
         <div className="financeModal__actions">
