@@ -6,6 +6,7 @@ import { RootState } from "../../redux/root.reducer";
 import {
   fetchFinanceTransactionsStartAsync,
   financeTransactionsDelete,
+  financeTransactionsAdd,
 } from "../../redux/financeTransactions/financeTransactions.actions";
 
 import SearchInput from "../../components/SearchInput";
@@ -61,6 +62,38 @@ const FinanceTransactionsPage: React.FC = () => {
     dispatchDelete: (id) => dispatch(financeTransactionsDelete(id)),
   };
 
+  const options = {
+    fields: [
+      {
+        name: "title",
+        label: "Finance Name",
+        placeholder: "Type Here",
+        required: true,
+      },
+      {
+        name: "finance_account_id",
+        label: "Finance Account",
+        placeholder: "Type Here",
+        readOnly: true,
+      },
+      {
+        name: "amount",
+        label: "Amount (IDR)",
+        placeholder: "Type Amount Here",
+        required: true,
+      },
+      {
+        name: "description",
+        label: "Description",
+        placeholder: "Type Description Here",
+      },
+    ],
+  };
+
+  const modalSubmitDispatch = (formData?) => {
+    dispatch(financeTransactionsAdd(formData));
+  };
+
   return (
     <div className="financeAccountPage">
       <Helmet>
@@ -72,7 +105,8 @@ const FinanceTransactionsPage: React.FC = () => {
       </div>
       {tableData?.data && <CustomTable tableData={tableData} />}
       <FinanceModal
-        submitDispatch={() => {}}
+        options={options}
+        submitDispatch={modalSubmitDispatch}
         title="Create New Finance"
         show={showModal}
         setShow={() => setShowModal(false)}

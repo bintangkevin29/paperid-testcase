@@ -1,4 +1,19 @@
 @import "../../variables.scss";
 
 .financeModal {
+  &__actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  &__button {
+    width: 150px;
+    &--submit {
+      color: #fff;
+    }
+    &--cancel {
+      box-shadow: none;
+    }
+  }
 }

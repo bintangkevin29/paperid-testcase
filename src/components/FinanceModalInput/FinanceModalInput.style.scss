@@ -1,8 +1,24 @@
 @import "../../variables.scss";
 
 .financeModalInput {
+  color: $color-dark;
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+  }
   &__requiredIndicator {
     color: $color-danger;
     font-weight: 600;
+  }
+
+  &__field {
+    font-size: 13px;
+    background: transparent;
+    border: 0;
+    padding: 6px 0px;
+    border-bottom: 1px solid #00000029;
+    border-radius: 0;
+    font-weight: 300;
+    color: $color-dark;
   }
 }

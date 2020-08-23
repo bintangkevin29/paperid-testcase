@@ -3,10 +3,8 @@ import { Button, Spinner } from "react-bootstrap";
 
 import "./CustomButton.style.scss";
 
-type Variant = "primary" | "secondary";
-
 interface Props {
-  variant?: Variant;
+  variant?: string;
   children: ReactNode;
   disabled?: boolean;
   isLoading?: boolean;

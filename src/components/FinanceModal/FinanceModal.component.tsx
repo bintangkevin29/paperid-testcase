@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import CustomModal from "../CustomModal";
 import { Form } from "react-bootstrap";
+import FinanceModalInput from "../FinanceModalInput";
+import CustomButton from "../CustomButton";
+
+import "./FinanceModal.style.scss";
+
+interface OptionsProps {
+  fields: {
+    name: string;
+    label: string;
+    placeholder: string;
+    required?: boolean;
+    readOnly?: boolean;
+  }[];
+}
 
 interface Props {
   title: string;
   className?: string;
-  setShow: () => void;
+  setShow: (boolean) => void;
   show: boolean;
-  items?: object;
-  submitDispatch?: (id) => void;
+  options: OptionsProps;
+  submitDispatch: (id?) => void;
+  mode?: "edit" | "view" | "delete";
 }
 
 const FinanceModal: React.FC<Props> = ({
@@ -16,9 +31,31 @@ const FinanceModal: React.FC<Props> = ({
   className,
   show = false,
   setShow,
-  items,
+  options,
   submitDispatch,
+  mode = "edit",
 }) => {
+  const [formData, setFormData] = useState<object>();
+
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("cpl");
+
+    submitDispatch(formData);
+  };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   return (
     <CustomModal
       className={`financeModal ${className}`}
@@ -27,9 +64,33 @@ const FinanceModal: React.FC<Props> = ({
       setShowModal={setShow}
       badge="Finance"
     >
-      <Form>
-        <Form.Label>Tes</Form.Label>
-        <Form.Control className="financeModal__field" />
+      <Form onSubmit={handleFormSubmit}>
+        {options.fields.map((field, i) => (
+          <FinanceModalInput
+            key={i}
+            name={field.name}
+            onChange={handleFieldChange}
+            readOnly={field.readOnly}
+            required={field.required}
+            label={field.label}
+          />
+        ))}
+        <div className="financeModal__actions">
+          <CustomButton
+            className="financeModal__button financeModal__button--submit"
+            variant="secondary"
+            type="submit"
+          >
+            Simpan
+          </CustomButton>
+          <CustomButton
+            onClick={() => setShow(false)}
+            className="financeModal__button financeModal__button--cancel"
+            variant="outline-dark"
+          >
+            Batal
+          </CustomButton>
+        </div>
       </Form>
     </CustomModal>
   );
