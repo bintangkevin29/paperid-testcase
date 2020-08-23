@@ -17,7 +17,7 @@ export interface OptionsFieldProps {
 
 export interface OptionsProps {
   fields: OptionsFieldProps[];
-  submitDispatch: (params?) => void;
+  submitDispatch: (params?, edit?) => void;
 }
 
 interface Props {
@@ -55,7 +55,7 @@ const FinanceModal: React.FC<Props> = ({
     if (options?.submitDispatch) {
       e.preventDefault();
 
-      options.submitDispatch(formData);
+      options.submitDispatch(formData, mode === "edit");
       setShow(false);
     }
   };
