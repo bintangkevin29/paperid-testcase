@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/paperid-testcase/static/css/main.5227187d.chunk.css",
-    "main.js": "/paperid-testcase/static/js/main.3687c531.chunk.js",
-    "main.js.map": "/paperid-testcase/static/js/main.3687c531.chunk.js.map",
+    "main.js": "/paperid-testcase/static/js/main.cb159ed2.chunk.js",
+    "main.js.map": "/paperid-testcase/static/js/main.cb159ed2.chunk.js.map",
     "runtime-main.js": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js",
     "runtime-main.js.map": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js.map",
     "static/js/2.21e1d832.chunk.js": "/paperid-testcase/static/js/2.21e1d832.chunk.js",
     "static/js/2.21e1d832.chunk.js.map": "/paperid-testcase/static/js/2.21e1d832.chunk.js.map",
     "index.html": "/paperid-testcase/index.html",
-    "precache-manifest.6621215a848ceb623b9dda182ce02c6b.js": "/paperid-testcase/precache-manifest.6621215a848ceb623b9dda182ce02c6b.js",
+    "precache-manifest.67a58ca1fc3a3297f088e60dbc4b5fee.js": "/paperid-testcase/precache-manifest.67a58ca1fc3a3297f088e60dbc4b5fee.js",
     "service-worker.js": "/paperid-testcase/service-worker.js",
     "static/css/main.5227187d.chunk.css.map": "/paperid-testcase/static/css/main.5227187d.chunk.css.map",
     "static/js/2.21e1d832.chunk.js.LICENSE.txt": "/paperid-testcase/static/js/2.21e1d832.chunk.js.LICENSE.txt",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.8c9b5fd5.js",
     "static/js/2.21e1d832.chunk.js",
     "static/css/main.5227187d.chunk.css",
-    "static/js/main.3687c531.chunk.js"
+    "static/js/main.cb159ed2.chunk.js"
   ]
 }
