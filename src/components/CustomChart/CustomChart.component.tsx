@@ -57,8 +57,6 @@ const CustomChart: React.FC = () => {
   );
 
   return (
-    // A react-chart hyper-responsively and continuously fills the available
-    // space of its parent element automatically
     <div
       style={{
         width: "100%",
