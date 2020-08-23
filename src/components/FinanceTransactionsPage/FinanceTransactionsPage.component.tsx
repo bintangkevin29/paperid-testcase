@@ -15,6 +15,7 @@ import CustomTable from "../../components/CustomTable";
 
 import "./FinanceTransactionsPage.style.scss";
 import FinanceModal from "../FinanceModal";
+import { OptionsProps } from "../FinanceModal/FinanceModal.component";
 
 const FinanceTransactionsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -62,7 +63,7 @@ const FinanceTransactionsPage: React.FC = () => {
     dispatchDelete: (id) => dispatch(financeTransactionsDelete(id)),
   };
 
-  const options = {
+  const options: OptionsProps = {
     fields: [
       {
         name: "title",
@@ -110,9 +111,7 @@ const FinanceTransactionsPage: React.FC = () => {
         title="Create New Finance"
         show={showModal}
         setShow={() => setShowModal(false)}
-      >
-        TEst
-      </FinanceModal>
+      />
     </div>
   );
 };

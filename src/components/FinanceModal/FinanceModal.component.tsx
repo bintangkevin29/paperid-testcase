@@ -6,7 +6,7 @@ import CustomButton from "../CustomButton";
 
 import "./FinanceModal.style.scss";
 
-interface OptionsProps {
+export interface OptionsProps {
   fields: {
     name: string;
     label: string;
