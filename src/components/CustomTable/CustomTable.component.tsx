@@ -101,6 +101,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
         show={showModal}
         setShow={setShowModal}
         options={options}
+        mode="edit"
       />
     </Fragment>
   );
