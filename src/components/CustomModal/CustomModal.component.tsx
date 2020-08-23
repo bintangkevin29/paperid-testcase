@@ -8,9 +8,10 @@ interface Props {
   setShowModal: (showModal: boolean) => void;
   children: ReactNode;
   title: string;
+  className?: string;
 }
 
-const CustomModal: React.FC<Props> = ({ showModal, setShowModal, children, title }) => {
+const CustomModal: React.FC<Props> = ({ showModal, setShowModal, children, title, className }) => {
   return (
     <Modal className="customModal" show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header closeButton>
