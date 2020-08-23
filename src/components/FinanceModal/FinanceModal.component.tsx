@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, FormEvent } from "react";
 import CustomModal from "../CustomModal";
 import { Form } from "react-bootstrap";
 import FinanceModalInput from "../FinanceModalInput";

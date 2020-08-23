@@ -1,47 +1,47 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
-import { RootState } from "../../redux/root.reducer";
-import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
+// import { RootState } from "../../redux/root.reducer";
+// import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
 
 import CustomModal from "../../components/CustomModal";
 import SearchInput from "../../components/SearchInput";
 import CustomButton from "../../components/CustomButton";
-import CustomTable from "../../components/CustomTable";
+// import CustomTable from "../../components/CustomTable";
 
 import "./FinanceAcountPage.style.scss";
 import { Helmet } from "react-helmet";
 
 const FinanceAcountPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const dispatch = useDispatch();
-  const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
-  const tableData = {
-    columns: [
-      {
-        header: "Name",
-        key: "name",
-      },
-      {
-        header: "Description",
-        key: "desc",
-      },
-      {
-        header: "Type",
-        key: "type",
-      },
-    ],
-    data: financeAccountData.map((finance) => {
-      const data = {
-        name: finance.name,
-        desc: finance.description,
-        type: finance.type,
-      };
-      return data;
-    }),
-    details: financeAccountData,
-    dispatchDelete: (id: string) => dispatch(financeAccountDelete(id)),
-  };
+  // const dispatch = useDispatch();
+  // const financeAccountData = useSelector((state: RootState) => state.financeAccount.data);
+  // const tableData = {
+  //   columns: [
+  //     {
+  //       header: "Name",
+  //       key: "name",
+  //     },
+  //     {
+  //       header: "Description",
+  //       key: "desc",
+  //     },
+  //     {
+  //       header: "Type",
+  //       key: "type",
+  //     },
+  //   ],
+  //   data: financeAccountData.map((finance) => {
+  //     const data = {
+  //       name: finance.name,
+  //       desc: finance.description,
+  //       type: finance.type,
+  //     };
+  //     return data;
+  //   }),
+  //   details: financeAccountData,
+  //   dispatchDelete: (id: string) => dispatch(financeAccountDelete(id)),
+  // };
 
   return (
     <div className="financeAccountPage">
