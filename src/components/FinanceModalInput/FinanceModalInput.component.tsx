@@ -12,6 +12,7 @@ interface Props {
   placeholder?: string;
   readOnly?: boolean;
   name: string;
+  hidden?: boolean;
 }
 
 const FinanceModalInput: React.FC<Props> = ({
@@ -23,9 +24,12 @@ const FinanceModalInput: React.FC<Props> = ({
   placeholder,
   readOnly = false,
   name,
+  hidden = false,
 }) => {
   return (
-    <Form.Group className={`financeModalInput ${className}`}>
+    <Form.Group
+      className={`financeModalInput ${className} ${hidden && "financeModalInput--hidden"}`}
+    >
       <Form.Label className="financeModalInput__label">
         {label} {required && <span className="financeModalInput__requiredIndicator">*</span>}
       </Form.Label>

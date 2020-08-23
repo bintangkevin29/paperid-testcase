@@ -58,6 +58,8 @@ export const financeTransactionsDelete = (id: number) => {
 };
 
 export const financeTransactionsAdd = (data, edit) => {
+  console.log(data);
+
   return async (dispatch) => {
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
@@ -69,8 +71,8 @@ export const financeTransactionsAdd = (data, edit) => {
       finance_account_id: 1,
     };
     await Axios[edit ? "patch" : "post"](
-      `${apiUrl}/finances${edit ? data.id : ""}`,
-      postedData,
+      `${apiUrl}/finances${edit ? `/${data.id}` : ""}`,
+      JSON.stringify(postedData),
       tokenHeader
     );
     dispatch(fetchFinanceTransactionsStartAsync());

@@ -30,6 +30,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "https://development.paper.id:3500/test-case",
   "browserslist": {
     "production": [
       ">0.2%",

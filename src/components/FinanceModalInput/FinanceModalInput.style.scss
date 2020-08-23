@@ -2,6 +2,9 @@
 
 .financeModalInput {
   color: $color-dark;
+  &--hidden {
+    display: none;
+  }
   &__label {
     font-size: 13px;
     font-weight: 600;

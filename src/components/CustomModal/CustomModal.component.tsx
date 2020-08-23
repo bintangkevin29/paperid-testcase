@@ -13,7 +13,7 @@ interface Props {
 }
 
 const CustomModal: React.FC<Props> = ({
-  showModal,
+  showModal = false,
   setShowModal,
   children,
   title,

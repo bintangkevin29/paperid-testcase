@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import CustomModal from "../CustomModal";
 import { Form } from "react-bootstrap";
 import FinanceModalInput from "../FinanceModalInput";
@@ -13,6 +13,7 @@ export interface OptionsFieldProps {
   required?: boolean;
   readOnly?: boolean;
   value?: string | number;
+  hidden?: boolean;
 }
 
 export interface OptionsProps {
@@ -37,11 +38,21 @@ const FinanceModal: React.FC<Props> = ({
   options,
   mode = "add",
 }) => {
-  const [formData, setFormData] = useState<object>(
-    options.fields.map((field) => ({
-      [field.name]: field.value,
-    }))
-  );
+  const [formData, setFormData] = useState<object | any>();
+  const [safeToRender, setSafeToRender] = useState<boolean>(false);
+
+  if (!formData) {
+    let temp;
+    options.fields.map((field) => {
+      temp = { ...temp, [field.name]: field.value };
+    });
+    setFormData(temp);
+    setSafeToRender(true);
+  }
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -68,37 +79,39 @@ const FinanceModal: React.FC<Props> = ({
       setShowModal={setShow}
       badge="Finance"
     >
-      <Form onSubmit={handleFormSubmit}>
-        {options.fields.map((field, i) => (
-          <FinanceModalInput
-            key={i}
-            name={field.name}
-            onChange={handleFieldChange}
-            readOnly={field.readOnly}
-            required={field.required}
-            label={field.label}
-            value={field.value}
-          />
-        ))}
-        <div className="financeModal__actions">
-          {(mode === "add" || mode === "edit") && (
+      {safeToRender && (
+        <Form onSubmit={handleFormSubmit}>
+          {options.fields.map((field, i) => (
+            <FinanceModalInput
+              key={i}
+              name={field.name}
+              onChange={handleFieldChange}
+              readOnly={field.readOnly}
+              required={field.required}
+              label={field.label}
+              value={formData[field.name]}
+            />
+          ))}
+          <div className="financeModal__actions">
+            {(mode === "add" || mode === "edit") && (
+              <CustomButton
+                className="financeModal__button financeModal__button--submit"
+                variant="secondary"
+                type="submit"
+              >
+                Simpan
+              </CustomButton>
+            )}
             <CustomButton
-              className="financeModal__button financeModal__button--submit"
-              variant="secondary"
-              type="submit"
+              onClick={() => setShow(false)}
+              className="financeModal__button financeModal__button--cancel"
+              variant="outline-dark"
             >
-              Simpan
+              Batal
             </CustomButton>
-          )}
-          <CustomButton
-            onClick={() => setShow(false)}
-            className="financeModal__button financeModal__button--cancel"
-            variant="outline-dark"
-          >
-            Batal
-          </CustomButton>
-        </div>
-      </Form>
+          </div>
+        </Form>
+      )}
     </CustomModal>
   );
 };

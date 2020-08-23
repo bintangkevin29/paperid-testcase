@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
 import VisibilityRoundedIcon from "@material-ui/icons/VisibilityRounded";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
@@ -41,18 +41,25 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
   };
 
   const options: OptionsProps = {
-    fields: modalOptions.fields.map(
-      (field): OptionsFieldProps => ({
-        ...field,
-        value: tableData.details[index][field.name],
-      })
-    ),
+    fields: [
+      ...modalOptions.fields.map(
+        (field): OptionsFieldProps => ({
+          ...field,
+          value: tableData.details[index][field.name],
+        })
+      ),
+      {
+        name: "id",
+        value: tableData.details[index].id,
+        label: "ID",
+        placeholder: "",
+        readOnly: true,
+      },
+    ],
     submitDispatch: (data?, edit?) => modalOptions.submitDispatch(data, edit),
   };
 
   const handleShowModal = () => {
-    console.log(options);
-
     setShowModal(true);
     setShowMenu(false);
   };
