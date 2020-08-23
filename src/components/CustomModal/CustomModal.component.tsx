@@ -13,7 +13,11 @@ interface Props {
 
 const CustomModal: React.FC<Props> = ({ showModal, setShowModal, children, title, className }) => {
   return (
-    <Modal className="customModal" show={showModal} onHide={() => setShowModal(false)}>
+    <Modal
+      className={`customModal ${className}`}
+      show={showModal}
+      onHide={() => setShowModal(false)}
+    >
       <Modal.Header closeButton>
         <div className="customModal__titleContainer">
           <Badge variant="lightBlue">Finance</Badge>
