@@ -1,4 +1,5 @@
 import Axios, { AxiosResponse } from "axios";
+import { store } from "../redux/store";
 
 type MethodTypes = "post" | "get";
 
@@ -14,12 +15,7 @@ interface ResponseNode {
   token: string;
 }
 
-const axiosFetch = async (
-  url: string,
-  method: MethodTypes,
-  body: object,
-  options?: object
-) => {
+const axiosFetch = async (url: string, method: MethodTypes, body: object, options?: object) => {
   let res;
   switch (method) {
     case "post":
@@ -33,17 +29,12 @@ const axiosFetch = async (
 
 export const customFetch = async (
   url: string,
-  body: Object,
   method: MethodTypes,
+  body: Object | [] | undefined = [],
   options?: Object
 ) => {
   try {
-    const fetchData: AxiosResponse<ResponseNode> = await axiosFetch(
-      url,
-      method,
-      body,
-      options
-    );
+    const fetchData: AxiosResponse<ResponseNode> = await axiosFetch(url, method, body, options);
 
     const { data } = fetchData;
     const successResponse: FetchReturnNode = {
@@ -60,4 +51,11 @@ export const customFetch = async (
 
     return errorResponse;
   }
+};
+
+export const getToken = () => {
+  const token = store.getState().auth.token;
+  return {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 };

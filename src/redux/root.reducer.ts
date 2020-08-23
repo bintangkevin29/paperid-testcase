@@ -4,10 +4,12 @@ import { persistReducer } from "redux-persist";
 
 import authReducer from "./auth/auth.reducer";
 import financeAccountReducer from "./financeAccount/financeAccount.reducer";
+import financeTransactionsReducer from "./financeTransactions/financeTransactions.reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   financeAccount: financeAccountReducer,
+  financeTransactions: financeTransactionsReducer,
 });
 
 const persistConfig = {
