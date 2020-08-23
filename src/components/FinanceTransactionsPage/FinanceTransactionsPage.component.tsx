@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 
 import { RootState } from "../../redux/root.reducer";
 import {
-  fetchFinanceTransactionsStartAsync,
   financeTransactionsDelete,
   financeTransactionsAdd,
 } from "../../redux/financeTransactions/financeTransactions.actions";
@@ -21,10 +20,6 @@ const FinanceTransactionsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const dispatch = useDispatch();
   const financeTransactionsData = useSelector((state: RootState) => state.financeTransactions.data);
-  useEffect(() => {
-    dispatch(fetchFinanceTransactionsStartAsync());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const tableData = {
     columns: [

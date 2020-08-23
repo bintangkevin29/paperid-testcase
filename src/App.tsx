@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Route, useHistory, useLocation, Switch } from "react-router-dom";
 import queryString from "query-string";
 
@@ -15,6 +15,7 @@ import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import FinancePage from "./pages/FinancePage";
 import FinanceTransactionsPage from "./components/FinanceTransactionsPage";
+import { fetchFinanceTransactionsStartAsync } from "./redux/financeTransactions/financeTransactions.actions";
 
 export interface ModuleNodes {
   component: React.FC;
@@ -64,8 +65,11 @@ const App: React.FC = () => {
   const urlSearch = window.location.search;
   const params = queryString.parse(urlSearch);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (userToken && location.pathname === "/login") {
+      dispatch(fetchFinanceTransactionsStartAsync());
       if (params) {
         history.push(decodeURIComponent(params.redirect));
       } else {

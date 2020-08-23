@@ -26,24 +26,20 @@ const CustomChart: React.FC = () => {
     "Dec",
   ];
 
-  const data = React.useMemo(
-    () => [
-      {
-        label: "Transaction",
-        data: months.map((_, i) => {
-          const getMonthToCount = transactionData.filter((td) => {
-            const getMonth = new Date(td.created_at).getMonth();
-            return getMonth === i;
-          });
+  const data = [
+    {
+      label: "Transaction",
+      data: months.map((_, i) => {
+        const getMonthToCount = transactionData.filter((td) => {
+          const getMonth = new Date(td.created_at).getMonth();
+          return getMonth === i;
+        });
 
-          const getTotal = getMonthToCount.reduce((a, b) => a + b.debit_amount, 0);
-          return [months[i], getTotal];
-        }),
-      },
-    ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+        const getTotal = getMonthToCount.reduce((a, b) => a + b.debit_amount, 0);
+        return [months[i], getTotal];
+      }),
+    },
+  ];
 
   const series = React.useMemo(
     () => ({
