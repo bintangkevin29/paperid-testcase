@@ -41,7 +41,7 @@ export const fetchFinanceTransactionsStartAsync = () => {
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
     const fetchedData = await Axios.get(
-      process.env.REACT_APP_API_URL + "/finances?sort_field=id",
+      process.env.REACT_APP_API_URL + "/finances?sort_field=id&sort_type=0",
       tokenHeader
     );
     dispatch(fetchFinanceTransactionsSuccess(fetchedData.data.data));
