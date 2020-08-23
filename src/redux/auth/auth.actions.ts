@@ -51,11 +51,7 @@ export const fetchLoginStart = (loginData: LoginNode) => {
   return async (dispatch) => {
     dispatch(flushAuthData());
     dispatch(fetchLoginStartFetching());
-    const response = await customFetch(
-      process.env.REACT_APP_API_URL + "/login",
-      loginData,
-      "post"
-    );
+    const response = await customFetch(process.env.REACT_APP_API_URL + "/login", "post", loginData);
 
     if (response.hasError) {
       dispatch(fetchLoginError(response.message));
