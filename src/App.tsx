@@ -13,6 +13,7 @@ import FinanceAcountPage from "./pages/FinanceAcountPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import FinancePage from "./pages/FinancePage";
+import FinanceTransactionsPage from "./components/FinanceTransactionsPage";
 
 export interface ModuleNodes {
   component: React.FC;
@@ -45,7 +46,7 @@ export const modules: ModuleNodes[] = [
         name: "Account",
       },
       {
-        component: FinanceAcountPage,
+        component: FinanceTransactionsPage,
         url: "/finance/transaction",
         pageTitle: "All Finance Transactions",
         name: "Transactions",
@@ -77,11 +78,7 @@ const App: React.FC = () => {
             {modules.map((module, i) => {
               const ChildComponent = module.component;
               return (
-                <ProtectedRoute
-                  key={i}
-                  exact={module.childModule ? false : true}
-                  path={module.url}
-                >
+                <ProtectedRoute key={i} exact={module.childModule ? false : true} path={module.url}>
                   <ChildComponent />
                 </ProtectedRoute>
               );
