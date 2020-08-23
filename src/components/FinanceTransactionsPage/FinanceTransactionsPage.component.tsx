@@ -103,7 +103,7 @@ const FinanceTransactionsPage: React.FC = () => {
       </Helmet>
       <div className="financeAccountPage__subHeader">
         <SearchInput className="financeAccountPage__search" />
-        <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
+        <CustomButton onClick={() => setShowModal(true)}>Create New Finance</CustomButton>
       </div>
       {tableData?.data && <CustomTable modalOptions={options} tableData={tableData} />}
       <FinanceModal
