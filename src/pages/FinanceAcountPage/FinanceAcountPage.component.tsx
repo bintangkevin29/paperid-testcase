@@ -10,6 +10,7 @@ import CustomButton from "../../components/CustomButton";
 import CustomTable from "../../components/CustomTable";
 
 import "./FinanceAcountPage.style.scss";
+import { Helmet } from "react-helmet";
 
 const FinanceAcountPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -44,6 +45,9 @@ const FinanceAcountPage: React.FC = () => {
 
   return (
     <div className="financeAccountPage">
+      <Helmet>
+        <title>Accounts</title>
+      </Helmet>
       <div className="financeAccountPage__subHeader">
         <SearchInput className="financeAccountPage__search" />
         <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>

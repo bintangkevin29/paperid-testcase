@@ -3,6 +3,8 @@ import { Dispatch } from "redux";
 import { getToken } from "../../helpers/request.helper";
 import Axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export type FinanceTransactionsTypes =
   | {
       type: "FINANCE_TRANSACTIONS_FETCH";
@@ -16,8 +18,15 @@ const fetchFinanceTransactionsStart = (): FinanceTransactionsTypes => ({
   type: "FINANCE_TRANSACTIONS_FETCH",
 });
 
+const fetchFinanceTransactionsSuccess = (
+  data: FinanceTransactionsDataNode[]
+): FinanceTransactionsTypes => ({
+  type: "FINANCE_TRANSACTIONS_FETCH_SUCCESS",
+  payload: data,
+});
+
 export const fetchFinanceTransactionsStartAsync = () => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch) => {
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
     const fetchedData = await Axios.get(
@@ -28,9 +37,11 @@ export const fetchFinanceTransactionsStartAsync = () => {
   };
 };
 
-const fetchFinanceTransactionsSuccess = (
-  data: FinanceTransactionsDataNode[]
-): FinanceTransactionsTypes => ({
-  type: "FINANCE_TRANSACTIONS_FETCH_SUCCESS",
-  payload: data,
-});
+export const financeTransactionsDelete = (id: number) => {
+  return async (dispatch) => {
+    const tokenHeader = getToken();
+    dispatch(fetchFinanceTransactionsStart());
+    await Axios.delete(apiUrl + "/finances/" + id, tokenHeader);
+    dispatch(fetchFinanceTransactionsStartAsync());
+  };
+};

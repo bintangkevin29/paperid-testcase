@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Helmet } from "react-helmet";
 
 import { RootState } from "../../redux/root.reducer";
-import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
+import {
+  fetchFinanceTransactionsStartAsync,
+  financeTransactionsDelete,
+} from "../../redux/financeTransactions/financeTransactions.actions";
 
 import CustomModal from "../../components/CustomModal";
 import SearchInput from "../../components/SearchInput";
@@ -10,7 +14,6 @@ import CustomButton from "../../components/CustomButton";
 import CustomTable from "../../components/CustomTable";
 
 import "./FinanceTransactionsPage.style.scss";
-import { fetchFinanceTransactionsStartAsync } from "../../redux/financeTransactions/financeTransactions.actions";
 
 const FinanceTransactionsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -50,16 +53,19 @@ const FinanceTransactionsPage: React.FC = () => {
         fnAccount: finance.finance_account_type,
         fnAccountName: finance.finance_account_name,
         ref: finance.title,
-        amt: finance.debit_amount,
+        amt: `Rp ${finance.debit_amount.toFixed(2)}`,
       };
       return data;
     }),
     details: financeTransactionsData,
-    dispatchDelete: (id: string) => dispatch(financeAccountDelete(id)),
+    dispatchDelete: (id) => dispatch(financeTransactionsDelete(id)),
   };
 
   return (
     <div className="financeAccountPage">
+      <Helmet>
+        <title>Transactions</title>
+      </Helmet>
       <div className="financeAccountPage__subHeader">
         <SearchInput className="financeAccountPage__search" />
         <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
