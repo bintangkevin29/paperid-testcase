@@ -8,12 +8,12 @@ import {
   financeTransactionsDelete,
 } from "../../redux/financeTransactions/financeTransactions.actions";
 
-import CustomModal from "../../components/CustomModal";
 import SearchInput from "../../components/SearchInput";
 import CustomButton from "../../components/CustomButton";
 import CustomTable from "../../components/CustomTable";
 
 import "./FinanceTransactionsPage.style.scss";
+import FinanceModal from "../FinanceModal";
 
 const FinanceTransactionsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -71,9 +71,14 @@ const FinanceTransactionsPage: React.FC = () => {
         <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
       </div>
       {tableData?.data && <CustomTable tableData={tableData} />}
-      <CustomModal title="Add" showModal={showModal} setShowModal={() => setShowModal(false)}>
+      <FinanceModal
+        submitDispatch={() => {}}
+        title="Create New Finance"
+        show={showModal}
+        setShow={() => setShowModal(false)}
+      >
         TEst
-      </CustomModal>
+      </FinanceModal>
     </div>
   );
 };
