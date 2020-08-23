@@ -47,15 +47,10 @@ const FinanceModal: React.FC<Props> = ({
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("cpl");
 
     submitDispatch(formData);
     setShow(false);
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <CustomModal
