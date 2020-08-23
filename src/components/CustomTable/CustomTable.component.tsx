@@ -6,6 +6,8 @@ import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import "./CustomTable.style.scss";
 import CustomButton from "../CustomButton";
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import FinanceModal from "../FinanceModal";
+import { OptionsProps, OptionsFieldProps } from "../FinanceModal/FinanceModal.component";
 
 interface TableNode {
   columns: {
@@ -19,18 +21,40 @@ interface TableNode {
 
 interface Props {
   tableData: TableNode;
+  modalOptions: OptionsProps;
 }
 
-const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> = ({
-  data,
-  tableData,
-  index,
-}) => {
+interface TableRowProps {
+  data: object;
+  tableData: TableNode;
+  index: number;
+  modalOptions: OptionsProps;
+}
+
+const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOptions }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleDistpachDelete = (): void => {
     setShowMenu(false);
     tableData.dispatchDelete(tableData.details[index].id);
+  };
+
+  const options: OptionsProps = {
+    fields: modalOptions.fields.map(
+      (field): OptionsFieldProps => ({
+        ...field,
+        value: tableData.details[index][field.name],
+      })
+    ),
+    submitDispatch: (data?) => modalOptions.submitDispatch(data),
+  };
+
+  const handleShowModal = () => {
+    console.log(options);
+
+    setShowModal(true);
+    setShowMenu(false);
   };
 
   return (
@@ -52,7 +76,7 @@ const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> 
                     <VisibilityRoundedIcon className="customTable__popupMenuIcon" />{" "}
                     <span>View</span>
                   </div>
-                  <div className="customTable__popupMenuItems">
+                  <div onClick={handleShowModal} className="customTable__popupMenuItems">
                     <CreateRoundedIcon className="customTable__popupMenuIcon" /> <span>Edit</span>
                   </div>
                   <div onClick={handleDistpachDelete} className="customTable__popupMenuItems">
@@ -72,11 +96,17 @@ const TableRow: React.FC<{ data: object; tableData: TableNode; index: number }> 
           </OverlayTrigger>
         </div>
       </td>
+      <FinanceModal
+        title="Finance Details"
+        show={showModal}
+        setShow={setShowModal}
+        options={options}
+      />
     </Fragment>
   );
 };
 
-const CustomTable: React.FC<Props> = ({ tableData }) => {
+const CustomTable: React.FC<Props> = ({ tableData, modalOptions }) => {
   return (
     <div className="customTable">
       <table className="table">
@@ -91,7 +121,7 @@ const CustomTable: React.FC<Props> = ({ tableData }) => {
         <tbody>
           {tableData.data.map((dt, i) => (
             <tr key={i}>
-              <TableRow data={dt} index={i} tableData={tableData} />
+              <TableRow data={dt} index={i} modalOptions={modalOptions} tableData={tableData} />
             </tr>
           ))}
         </tbody>

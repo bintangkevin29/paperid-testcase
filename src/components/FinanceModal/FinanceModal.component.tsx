@@ -6,14 +6,18 @@ import CustomButton from "../CustomButton";
 
 import "./FinanceModal.style.scss";
 
+export interface OptionsFieldProps {
+  name: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  readOnly?: boolean;
+  value?: string | number;
+}
+
 export interface OptionsProps {
-  fields: {
-    name: string;
-    label: string;
-    placeholder: string;
-    required?: boolean;
-    readOnly?: boolean;
-  }[];
+  fields: OptionsFieldProps[];
+  submitDispatch: (params?) => void;
 }
 
 interface Props {
@@ -22,9 +26,7 @@ interface Props {
   setShow: (boolean) => void;
   show: boolean;
   options: OptionsProps;
-  submitDispatch: (id?) => void;
   mode?: "edit" | "view" | "delete";
-  value?: string | number;
 }
 
 const FinanceModal: React.FC<Props> = ({
@@ -33,11 +35,13 @@ const FinanceModal: React.FC<Props> = ({
   show = false,
   setShow,
   options,
-  submitDispatch,
   mode = "edit",
-  value,
 }) => {
-  const [formData, setFormData] = useState<object>();
+  const [formData, setFormData] = useState<object>(
+    options.fields.map((field) => ({
+      [field.name]: field.value,
+    }))
+  );
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -48,10 +52,12 @@ const FinanceModal: React.FC<Props> = ({
   };
 
   const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
+    if (options?.submitDispatch) {
+      e.preventDefault();
 
-    submitDispatch(formData);
-    setShow(false);
+      options.submitDispatch(formData);
+      setShow(false);
+    }
   };
 
   return (
@@ -71,17 +77,19 @@ const FinanceModal: React.FC<Props> = ({
             readOnly={field.readOnly}
             required={field.required}
             label={field.label}
-            value={value}
+            value={field.value}
           />
         ))}
         <div className="financeModal__actions">
-          <CustomButton
-            className="financeModal__button financeModal__button--submit"
-            variant="secondary"
-            type="submit"
-          >
-            Simpan
-          </CustomButton>
+          {mode === "edit" && (
+            <CustomButton
+              className="financeModal__button financeModal__button--submit"
+              variant="secondary"
+              type="submit"
+            >
+              Simpan
+            </CustomButton>
+          )}
           <CustomButton
             onClick={() => setShow(false)}
             className="financeModal__button financeModal__button--cancel"

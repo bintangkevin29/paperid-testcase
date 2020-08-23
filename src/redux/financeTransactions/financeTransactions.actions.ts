@@ -63,8 +63,8 @@ export const financeTransactionsAdd = (data) => {
     dispatch(fetchFinanceTransactionsStart());
     const postedData = {
       title: data.title,
-      debit_amount: Number(data.amount),
-      credit_amount: Number(data.amount),
+      debit_amount: Number(data.debit_amount),
+      credit_amount: Number(data.debit_amount),
       description: data.description,
       finance_account_id: 1,
     };

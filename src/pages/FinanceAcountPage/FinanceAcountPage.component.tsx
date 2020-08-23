@@ -52,7 +52,7 @@ const FinanceAcountPage: React.FC = () => {
         <SearchInput className="financeAccountPage__search" />
         <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
       </div>
-      {tableData?.data && <CustomTable tableData={tableData} />}
+      {/* {tableData?.data && <CustomTable tableData={tableData} />} */}
       <CustomModal title="Add" showModal={showModal} setShowModal={() => setShowModal(false)}>
         TEst
       </CustomModal>

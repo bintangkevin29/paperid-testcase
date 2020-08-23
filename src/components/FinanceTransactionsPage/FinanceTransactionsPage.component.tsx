@@ -41,7 +41,7 @@ const FinanceTransactionsPage: React.FC = () => {
         key: "fnAccountName",
       },
       {
-        header: "Reference",
+        header: "Name",
         key: "ref",
       },
       {
@@ -78,7 +78,7 @@ const FinanceTransactionsPage: React.FC = () => {
         readOnly: true,
       },
       {
-        name: "amount",
+        name: "debit_amount",
         label: "Amount (IDR)",
         placeholder: "Type Amount Here",
         required: true,
@@ -89,6 +89,7 @@ const FinanceTransactionsPage: React.FC = () => {
         placeholder: "Type Description Here",
       },
     ],
+    submitDispatch: (data: object, edit?: boolean) => modalSubmitDispatch(data),
   };
 
   const modalSubmitDispatch = (formData?) => {
@@ -104,10 +105,9 @@ const FinanceTransactionsPage: React.FC = () => {
         <SearchInput className="financeAccountPage__search" />
         <CustomButton onClick={() => setShowModal(true)}>Create New Account</CustomButton>
       </div>
-      {tableData?.data && <CustomTable tableData={tableData} />}
+      {tableData?.data && <CustomTable modalOptions={options} tableData={tableData} />}
       <FinanceModal
         options={options}
-        submitDispatch={modalSubmitDispatch}
         title="Create New Finance"
         show={showModal}
         setShow={() => setShowModal(false)}
