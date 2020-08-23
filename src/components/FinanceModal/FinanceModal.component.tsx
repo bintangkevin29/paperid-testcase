@@ -50,6 +50,7 @@ const FinanceModal: React.FC<Props> = ({
     console.log("cpl");
 
     submitDispatch(formData);
+    setShow(false);
   };
 
   useEffect(() => {
