@@ -11,3 +11,6 @@ Install dependency
 
 Run 
 > npm start
+
+### Summary
+This is the test case for Paper.id recruitment process. The web app was built using React library using create-react-app with Typescript boilerplate.
