@@ -4,8 +4,11 @@ import { Helmet } from "react-helmet";
 import "./DashboardPage.style.scss";
 import CustomChart from "../../components/CustomChart";
 import { Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/root.reducer";
 
 const DashboardPage: React.FC = () => {
+  const accounts = useSelector((state: RootState) => state.financeAccount.data);
   return (
     <div className="dashboardPage">
       <Helmet>
@@ -22,54 +25,24 @@ const DashboardPage: React.FC = () => {
           <span className="dashboardPage__cardHeading">Finance Accounts</span>
           <div className="dashboardPage__card dashboardPage__card--transparent">
             <Row>
-              <Col lg={6} md={12}>
-                <div className="dashboardPage__accountCard">
-                  <div className="dashboardPage__accountIcon">S</div>
-                  <div className="dashboardPage__accountDetails">
-                    <div className="dashboardPage__accountDetailsName">
-                      <span>Static Example &ndash; </span>
+              {accounts.map((account) => (
+                <Col lg={6} md={12}>
+                  <div className="dashboardPage__accountCard">
+                    <div className="dashboardPage__accountIcon">S</div>
+                    <div className="dashboardPage__accountDetails">
+                      <div className="dashboardPage__accountDetailsName">
+                        <span>{account.name} &ndash; </span>
+                        <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
+                          {account.type}
+                        </span>
+                      </div>
                       <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                        Bank
+                        {account.Description}
                       </span>
                     </div>
-                    <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                      New Account
-                    </span>
                   </div>
-                </div>
-              </Col>
-              <Col lg={6} md={12}>
-                <div className="dashboardPage__accountCard">
-                  <div className="dashboardPage__accountIcon">S</div>
-                  <div className="dashboardPage__accountDetails">
-                    <div className="dashboardPage__accountDetailsName">
-                      <span>Static Example &ndash; </span>
-                      <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                        Bank
-                      </span>
-                    </div>
-                    <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                      New Account
-                    </span>
-                  </div>
-                </div>
-              </Col>
-              <Col lg={6} md={12}>
-                <div className="dashboardPage__accountCard">
-                  <div className="dashboardPage__accountIcon">S</div>
-                  <div className="dashboardPage__accountDetails">
-                    <div className="dashboardPage__accountDetailsName">
-                      <span>Static Example &ndash; </span>
-                      <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                        Bank
-                      </span>
-                    </div>
-                    <span className="dashboardPage__accountDetailsName dashboardPage__accountDetailsName--details">
-                      New Account
-                    </span>
-                  </div>
-                </div>
-              </Col>
+                </Col>
+              ))}
             </Row>
           </div>
         </Col>

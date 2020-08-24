@@ -23,14 +23,11 @@ export type FinanceAccountTypes =
       payload: string;
     };
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const financeAccountAdd = (data: FinanceAccountDataProps): FinanceAccountTypes => ({
   type: "FINANCE_ACCCOUNT_ADD",
   payload: data,
-});
-
-export const financeAccountDelete = (id: string): FinanceAccountTypes => ({
-  type: "FINANCE_ACCCOUNT_DELETE",
-  payload: id,
 });
 
 const fetchFinanceAccountStart = (): FinanceAccountTypes => ({
@@ -41,6 +38,15 @@ const fetchFinanceAccountSuccess = (data: FinanceAccountDataProps[]): FinanceAcc
   type: "FINANCE_ACCOUNT_FETCH_SUCCESS",
   payload: data,
 });
+
+export const financeAccountDelete = (id: number) => {
+  return async (dispatch) => {
+    const tokenHeader = getToken();
+    dispatch(fetchFinanceAccountStart());
+    await Axios.delete(apiUrl + "/finance-accounts/" + id, tokenHeader);
+    dispatch(fetchFinanceAccountStartAsync());
+  };
+};
 
 export const fetchFinanceAccountStartAsync = () => {
   return async (dispatch) => {
