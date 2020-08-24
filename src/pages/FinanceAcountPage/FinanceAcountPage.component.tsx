@@ -36,7 +36,7 @@ const FinanceAcountPage: React.FC = () => {
     ],
     data: financeTransactionsData.map((finance) => {
       const data = {
-        name: finance.created_at,
+        name: finance.name,
         type: finance.type,
         created_at: finance.created_at,
       };
