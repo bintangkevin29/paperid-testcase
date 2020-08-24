@@ -1,5 +1,5 @@
 import { FinanceTransactionsDataNode } from "./financeTransactions.reducer";
-import { getToken } from "../../helpers/request.helper";
+import { getToken, checkAuth } from "../../helpers/request.helper";
 import Axios from "axios";
 
 interface FinanceTransactionsInputData {
@@ -49,11 +49,14 @@ export const fetchFinanceTransactionsStartAsync = () => {
   return async (dispatch) => {
     const tokenHeader = getToken();
     dispatch(fetchFinanceTransactionsStart());
-    const fetchedData = await Axios.get(
+    await Axios.get(
       process.env.REACT_APP_API_URL + "/finances?sort_field=id&sort_type=0",
       tokenHeader
-    );
-    dispatch(fetchFinanceTransactionsSuccess(fetchedData.data.data));
+    )
+      .then((fetchedData) => dispatch(fetchFinanceTransactionsSuccess(fetchedData.data.data)))
+      .catch((err) => {
+        checkAuth(err.response.status, dispatch);
+      });
   };
 };
 
@@ -82,7 +85,10 @@ export const financeTransactionsAdd = (data, edit) => {
       `${apiUrl}/finances${edit ? `/${data.id}` : ""}`,
       JSON.stringify(postedData),
       tokenHeader
-    ).catch((err) => dispatch(fetchFinanceTransactionsError(err.message)));
+    ).catch((err) => {
+      checkAuth(err.response.status, dispatch);
+      dispatch(fetchFinanceTransactionsError(err.message));
+    });
     dispatch(fetchFinanceTransactionsStartAsync());
   };
 };

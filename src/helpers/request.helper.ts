@@ -1,5 +1,7 @@
 import Axios, { AxiosResponse } from "axios";
 import { store } from "../redux/store";
+import { flushAuthData } from "../redux/auth/auth.actions";
+import { Dispatch } from "redux";
 
 type MethodTypes = "post" | "get";
 
@@ -58,4 +60,10 @@ export const getToken = () => {
   return {
     headers: { Authorization: `Bearer ${token}` },
   };
+};
+
+export const checkAuth = (statusCode, dispatch) => {
+  if (statusCode === 401) {
+    dispatch(flushAuthData());
+  }
 };
