@@ -43,16 +43,16 @@ export const modules: ModuleNodes[] = [
     name: "Finance",
     childModule: [
       {
-        component: FinanceTransactionsPage,
-        url: "/finance/transaction",
-        pageTitle: "All Finance Transactions",
-        name: "Transactions",
-      },
-      {
         component: FinanceAcountPage,
         url: "/finance/account",
         pageTitle: "All Finance Account",
         name: "Account",
+      },
+      {
+        component: FinanceTransactionsPage,
+        url: "/finance/transaction",
+        pageTitle: "All Finance Transactions",
+        name: "Transactions",
       },
     ],
   },
