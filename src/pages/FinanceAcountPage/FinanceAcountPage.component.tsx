@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import CustomModal from "../../components/CustomModal";
 import SearchInput from "../../components/SearchInput";
 import CustomButton from "../../components/CustomButton";
 
@@ -9,9 +8,11 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/root.reducer";
 import FinanceModal, { OptionsProps } from "../../components/FinanceModal/FinanceModal.component";
-import { financeAccountDelete } from "../../redux/financeAccount/financeAccount.actions";
+import {
+  financeAccountDelete,
+  financeAccountAdd,
+} from "../../redux/financeAccount/financeAccount.actions";
 import CustomTable from "../../components/CustomTable";
-import { financeTransactionsAdd } from "../../redux/financeTransactions/financeTransactions.actions";
 
 const FinanceAcountPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -48,34 +49,28 @@ const FinanceAcountPage: React.FC = () => {
   const options: OptionsProps = {
     fields: [
       {
-        name: "title",
+        name: "name",
         label: "Finance Name",
         placeholder: "Type Here",
         required: true,
       },
       {
-        name: "finance_account_id",
-        label: "Finance Account",
-        placeholder: "Type Here",
-        readOnly: true,
-      },
-      {
-        name: "debit_amount",
-        label: "Amount (IDR)",
-        placeholder: "Type Amount Here",
-        required: true,
-      },
-      {
         name: "description",
         label: "Description",
-        placeholder: "Type Description Here",
+        placeholder: "Type Here",
+      },
+      {
+        name: "type",
+        label: "Type",
+        placeholder: "Income / Expense",
+        required: true,
       },
     ],
     submitDispatch: (data: object, edit?: boolean) => modalSubmitDispatch(data, edit),
   };
 
   const modalSubmitDispatch = (formData?, edit?) => {
-    dispatch(financeTransactionsAdd(formData, edit));
+    dispatch(financeAccountAdd(formData, edit));
   };
   return (
     <div className="financeAccountPage">

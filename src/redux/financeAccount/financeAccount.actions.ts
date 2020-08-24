@@ -25,11 +25,6 @@ export type FinanceAccountTypes =
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export const financeAccountAdd = (data: FinanceAccountDataProps): FinanceAccountTypes => ({
-  type: "FINANCE_ACCCOUNT_ADD",
-  payload: data,
-});
-
 const fetchFinanceAccountStart = (): FinanceAccountTypes => ({
   type: "FINANCE_ACCOUNT_FETCH",
 });
@@ -60,5 +55,33 @@ export const fetchFinanceAccountStartAsync = () => {
       .catch((err) => {
         checkAuth(err.response.status, dispatch);
       });
+  };
+};
+
+const fetchFinanceAccountError = (data: string): FinanceAccountTypes => ({
+  type: "FINANCE_ACCOUNT_ERROR",
+  payload: data,
+});
+
+export const financeAccountAdd = (data, edit) => {
+  return async (dispatch) => {
+    const tokenHeader = getToken();
+    dispatch(fetchFinanceAccountStart());
+    const postedData = {
+      name: data.name,
+      type: data.type,
+      descrp: Number(data.debit_amount),
+      description: data.description,
+      finance_account_id: 1,
+    };
+    await Axios[edit ? "patch" : "post"](
+      `${apiUrl}/finance-accounts${edit ? `/${data.id}` : ""}`,
+      JSON.stringify(postedData),
+      tokenHeader
+    ).catch((err) => {
+      checkAuth(err.response.status, dispatch);
+      dispatch(fetchFinanceAccountError(err.message));
+    });
+    dispatch(fetchFinanceAccountStartAsync());
   };
 };
