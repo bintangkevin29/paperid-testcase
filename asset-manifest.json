@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/paperid-testcase/static/css/main.3ba55493.chunk.css",
-    "main.js": "/paperid-testcase/static/js/main.95b2ca33.chunk.js",
-    "main.js.map": "/paperid-testcase/static/js/main.95b2ca33.chunk.js.map",
+    "main.css": "/paperid-testcase/static/css/main.a9dbd2d5.chunk.css",
+    "main.js": "/paperid-testcase/static/js/main.422dc73f.chunk.js",
+    "main.js.map": "/paperid-testcase/static/js/main.422dc73f.chunk.js.map",
     "runtime-main.js": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js",
     "runtime-main.js.map": "/paperid-testcase/static/js/runtime-main.8c9b5fd5.js.map",
-    "static/js/2.21e1d832.chunk.js": "/paperid-testcase/static/js/2.21e1d832.chunk.js",
-    "static/js/2.21e1d832.chunk.js.map": "/paperid-testcase/static/js/2.21e1d832.chunk.js.map",
+    "static/js/2.f1114706.chunk.js": "/paperid-testcase/static/js/2.f1114706.chunk.js",
+    "static/js/2.f1114706.chunk.js.map": "/paperid-testcase/static/js/2.f1114706.chunk.js.map",
     "index.html": "/paperid-testcase/index.html",
-    "precache-manifest.402a5d6f25d5be3704cbebc8466d48f6.js": "/paperid-testcase/precache-manifest.402a5d6f25d5be3704cbebc8466d48f6.js",
+    "precache-manifest.415a5a48c5f11a473fe5aa2d780389e0.js": "/paperid-testcase/precache-manifest.415a5a48c5f11a473fe5aa2d780389e0.js",
     "service-worker.js": "/paperid-testcase/service-worker.js",
-    "static/css/main.3ba55493.chunk.css.map": "/paperid-testcase/static/css/main.3ba55493.chunk.css.map",
-    "static/js/2.21e1d832.chunk.js.LICENSE.txt": "/paperid-testcase/static/js/2.21e1d832.chunk.js.LICENSE.txt",
+    "static/css/main.a9dbd2d5.chunk.css.map": "/paperid-testcase/static/css/main.a9dbd2d5.chunk.css.map",
+    "static/js/2.f1114706.chunk.js.LICENSE.txt": "/paperid-testcase/static/js/2.f1114706.chunk.js.LICENSE.txt",
     "static/media/Gambar-Untuk-press-Release-02.png": "/paperid-testcase/static/media/Gambar-Untuk-press-Release-02.91f854c7.png",
     "static/media/Gambar-Untuk-press-Release-02@2x.png": "/paperid-testcase/static/media/Gambar-Untuk-press-Release-02@2x.5a55f095.png",
     "static/media/Tutorial.svg": "/paperid-testcase/static/media/Tutorial.4b15b459.svg",
@@ -26,8 +26,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8c9b5fd5.js",
-    "static/js/2.21e1d832.chunk.js",
-    "static/css/main.3ba55493.chunk.css",
-    "static/js/main.95b2ca33.chunk.js"
+    "static/js/2.f1114706.chunk.js",
+    "static/css/main.a9dbd2d5.chunk.css",
+    "static/js/main.422dc73f.chunk.js"
   ]
 }

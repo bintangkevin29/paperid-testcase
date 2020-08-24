@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "88dfaadd29f195b994979fcd12008772",
+    "revision": "5b61b96c2aa880785ddb7d179b87b8a8",
     "url": "/paperid-testcase/index.html"
   },
   {
-    "revision": "493572e1b402fead521d",
-    "url": "/paperid-testcase/static/css/main.3ba55493.chunk.css"
+    "revision": "684dac1b7481befa8adf",
+    "url": "/paperid-testcase/static/css/main.a9dbd2d5.chunk.css"
   },
   {
-    "revision": "3c4192238e04e78d0add",
-    "url": "/paperid-testcase/static/js/2.21e1d832.chunk.js"
+    "revision": "a770daad0bb5dd72cb92",
+    "url": "/paperid-testcase/static/js/2.f1114706.chunk.js"
   },
   {
     "revision": "5e9b6f5c16b720e8a86875f97734673e",
-    "url": "/paperid-testcase/static/js/2.21e1d832.chunk.js.LICENSE.txt"
+    "url": "/paperid-testcase/static/js/2.f1114706.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "493572e1b402fead521d",
-    "url": "/paperid-testcase/static/js/main.95b2ca33.chunk.js"
+    "revision": "684dac1b7481befa8adf",
+    "url": "/paperid-testcase/static/js/main.422dc73f.chunk.js"
   },
   {
     "revision": "422eabe9a9c325ecc34f",
