@@ -16,6 +16,7 @@ const SearchInput: React.FC<{
         className="searchInput__field"
         placeholder={label}
         type={type}
+        readOnly
       />
       <img
         alt=""

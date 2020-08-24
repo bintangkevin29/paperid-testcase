@@ -80,7 +80,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, tableData, index, modalOption
             overlay={
               <Popover id="popover-positioned-bottom">
                 <Popover.Content className="customTable__popupMenu">
-                  <div onClick={handleShowModal} className="customTable__popupMenuItems">
+                  <div className="customTable__popupMenuItems customTable__popupMenuItems--disabled">
                     <VisibilityRoundedIcon className="customTable__popupMenuIcon" />
                     <span>View</span>
                   </div>

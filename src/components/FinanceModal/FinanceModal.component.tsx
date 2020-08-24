@@ -95,6 +95,7 @@ const FinanceModal: React.FC<Props> = ({
                 className="financeModal__button financeModal__button--submit"
                 variant="secondary"
                 type="submit"
+                disabled={mode === "edit"}
               >
                 Simpan
               </CustomButton>

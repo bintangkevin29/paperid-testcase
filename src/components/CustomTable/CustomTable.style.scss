@@ -57,6 +57,16 @@
       background: $color-primary;
       color: #fff;
     }
+
+    &--disabled {
+      color: grey;
+      opacity: 0.5;
+      cursor: default;
+      &:hover {
+        color: grey;
+        background-color: #fff;
+      }
+    }
   }
 
   &__popupMenuIcon {
