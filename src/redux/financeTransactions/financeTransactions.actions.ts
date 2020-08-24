@@ -79,7 +79,7 @@ export const financeTransactionsAdd = (data, edit) => {
       debit_amount: Number(data.debit_amount),
       credit_amount: Number(data.debit_amount),
       description: data.description,
-      finance_account_id: 1,
+      finance_account_id: 12,
     };
     await Axios[edit ? "patch" : "post"](
       `${apiUrl}/finances${edit ? `/${data.id}` : ""}`,
