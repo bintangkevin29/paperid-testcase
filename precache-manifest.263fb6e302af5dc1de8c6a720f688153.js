@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5b61b96c2aa880785ddb7d179b87b8a8",
+    "revision": "b6ced6a32456f936cfdc9497b55a575e",
     "url": "/paperid-testcase/index.html"
   },
   {
-    "revision": "684dac1b7481befa8adf",
+    "revision": "4124f2c4eb46e8ecaf14",
     "url": "/paperid-testcase/static/css/main.a9dbd2d5.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/paperid-testcase/static/js/2.f1114706.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "684dac1b7481befa8adf",
-    "url": "/paperid-testcase/static/js/main.422dc73f.chunk.js"
+    "revision": "4124f2c4eb46e8ecaf14",
+    "url": "/paperid-testcase/static/js/main.9a3dfb14.chunk.js"
   },
   {
     "revision": "422eabe9a9c325ecc34f",
