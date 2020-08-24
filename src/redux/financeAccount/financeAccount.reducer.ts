@@ -1,52 +1,45 @@
 import { FinanceAccountTypes } from "./financeAccount.actions";
 
 export interface FinanceAccountDataProps {
-  id: string;
+  id: number;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
   name: string;
-  description: string;
+  Description: string;
   type: string;
   last_modified: string;
-  created_at: string;
-  deleted_at: string | null;
 }
 interface FinanceAccountProps {
+  isFetching: boolean;
+  errorMessage: string | undefined;
   data: FinanceAccountDataProps[];
 }
 
 const INIT_STATE: FinanceAccountProps = {
-  data: [
-    {
-      id: "1",
-      name: "Sarapan Expense",
-      description: "biaya buat sarapan",
-      type: "expense",
-      last_modified: "2020-05-20 07:00:05",
-      created_at: "2020-05-20 06:50:05",
-      deleted_at: null,
-    },
-    {
-      id: "2",
-      name: "Dinner Expense",
-      description: "biaya buat Makan Siang",
-      type: "expense",
-      last_modified: "2020-05-20 07:00:05",
-      created_at: "2020-05-20 06:50:05",
-      deleted_at: null,
-    },
-  ],
+  isFetching: false,
+  errorMessage: undefined,
+  data: [],
 };
 
 const financeAccountReducer = (state = INIT_STATE, action: FinanceAccountTypes) => {
   switch (action.type) {
-    case "FINANCE_ACCCOUNT_ADD":
+    case "FINANCE_ACCOUNT_FETCH":
       return {
         ...state,
-        data: [...state.data, { ...action.payload }],
+        isFetching: true,
       };
-    case "FINANCE_ACCCOUNT_DELETE":
+    case "FINANCE_ACCOUNT_FETCH_SUCCESS":
       return {
         ...state,
-        data: state.data.filter((dt) => dt.id !== action.payload),
+        isFetching: false,
+        data: action.payload,
+      };
+    case "FINANCE_ACCOUNT_ERROR":
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
       };
     default:
       return state;

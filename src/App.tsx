@@ -16,6 +16,7 @@ import LoginPage from "./pages/LoginPage";
 import FinancePage from "./pages/FinancePage";
 import FinanceTransactionsPage from "./components/FinanceTransactionsPage";
 import { fetchFinanceTransactionsStartAsync } from "./redux/financeTransactions/financeTransactions.actions";
+import { fetchFinanceAccountStartAsync } from "./redux/financeAccount/financeAccount.actions";
 
 export interface ModuleNodes {
   component: React.FC;
@@ -70,6 +71,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (userToken && location.pathname === "/login") {
       dispatch(fetchFinanceTransactionsStartAsync());
+      dispatch(fetchFinanceAccountStartAsync());
       if (params) {
         history.push(decodeURIComponent(params.redirect));
       } else {
